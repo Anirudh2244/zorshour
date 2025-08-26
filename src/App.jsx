@@ -3,7 +3,7 @@ import Row from "./Row"
 import Col from "./Col"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
-import AutoPlay from "./AutoPlay"
+
 import LogoLoop from './LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
@@ -15,17 +15,17 @@ const techLogos = [
 ];
 
 // Alternative with image sources
-// const imageLogos = [
-//   { src: "/logos/company1.png", alt: "Company 1", href: "https://company1.com" },
-//   { src: "/logos/company2.png", alt: "Company 2", href: "https://company2.com" },
-//   { src: "/logos/company3.png", alt: "Company 3", href: "https://company3.com" },
-// ];
+const imageLogos = [
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_4sh9s64sh9s64sh9-removebg-preview.png?updatedAt=1756211420775", alt: "Company 1", href: "https://company1.com" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_h9dhtoh9dhtoh9dh-removebg-preview.png?updatedAt=1756211420711", alt: "Company 2", href: "https://company2.com" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_w52cx4w52cx4w52c-removebg-preview.png?updatedAt=1756211420588", alt: "Company 3", href: "https://company3.com" },
+];
 
 function HeroSection() {
   return (
-    <>
+    <div className="bg-black text-white">
     <Navbar className=""/>
-    <Col className="bg-black w-full h-[100vh] relative overflow-hidden" center={true}>
+    <Col className="w-full h-[100vh] relative overflow-hidden" center={true}>
       {/* Background particles */}
       <div className="absolute top-0 left-0 w-full h-full">
         <Particles
@@ -43,29 +43,31 @@ function HeroSection() {
       
       {/*content */}
       <Col className="relative z-10 !w-4/5 h-full justify-center pointer-events-none" center>
-        <h1 className="text-white text-3xl md:text-5xl font-bold text-center pointer-events-auto">
+        <h1 className=" text-3xl md:text-5xl font-bold text-center pointer-events-auto">
           Your North Star for Digital Marketing and Growth
         </h1>
-        <p className="text-white text-center pointer-events-auto">Navigate the digital universe with strategies that drive real growth.</p>
+        <p className=" text-center pointer-events-auto">Navigate the digital universe with strategies that drive real growth.</p>
       </Col>
     </Col>
-    <AutoPlay />
-    <div style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
+    
+   <Col>
+   <p>Trusted By</p>
       <LogoLoop
-        logos={techLogos}
+        logos={imageLogos}
         speed={50}
         direction="left"
-        logoHeight={48}
+        logoHeight={75}
         gap={40}
         pauseOnHover
         scaleOnHover
         fadeOut
-        fadeOutColor="#ffffff"
+        fadeOutColor="#000000"
         ariaLabel="Technology partners"
-      />
-    </div>
+        />
+        </Col>
+    
     <Footer /> 
-          </>
+          </div>
   )
 }
 export default HeroSection

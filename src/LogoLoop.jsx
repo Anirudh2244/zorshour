@@ -19,11 +19,7 @@ import {
   const cx = (...parts) =>
     parts.filter(Boolean).join(" ");
   
-  const useResizeObserver = (
-    callback,
-    elements,
-    dependencies
-  ) => {
+  const useResizeObserver = (callback, elements, dependencies) => {
     useEffect(() => {
       if (!window.ResizeObserver) {
         const handleResize = () => callback();
@@ -48,11 +44,7 @@ import {
     }, dependencies);
   };
   
-  const useImageLoader = (
-    seqRef,
-    onLoad,
-    dependencies
-  ) => {
+  const useImageLoader = (seqRef, onLoad, dependencies) => {
     useEffect(() => {
       const images = seqRef.current?.querySelectorAll("img") ?? [];
   
@@ -89,13 +81,7 @@ import {
     }, dependencies);
   };
   
-  const useAnimationLoop = (
-    trackRef,
-    targetVelocity,
-    seqWidth,
-    isHovered,
-    pauseOnHover
-  ) => {
+  const useAnimationLoop = (trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover) => {
     const rafRef = useRef(null);
     const lastTimestampRef = useRef(null);
     const offsetRef = useRef(0);
@@ -128,14 +114,12 @@ import {
           lastTimestampRef.current = timestamp;
         }
   
-        const deltaTime =
-          Math.max(0, timestamp - lastTimestampRef.current) / 1000;
+        const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
         lastTimestampRef.current = timestamp;
   
         const target = pauseOnHover && isHovered ? 0 : targetVelocity;
   
-        const easingFactor =
-          1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
+        const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
         velocityRef.current += (target - velocityRef.current) * easingFactor;
   
         if (seqWidth > 0) {
@@ -172,7 +156,7 @@ import {
       gap = 32,
       pauseOnHover = true,
       fadeOut = false,
-      fadeOutColor,
+      fadeOutColor = "#000000", // default black
       scaleOnHover = false,
       ariaLabel = "Partner logos",
       className,
@@ -183,9 +167,7 @@ import {
       const seqRef = useRef(null);
   
       const [seqWidth, setSeqWidth] = useState(0);
-      const [copyCount, setCopyCount] = useState(
-        ANIMATION_CONFIG.MIN_COPIES
-      );
+      const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
       const [isHovered, setIsHovered] = useState(false);
   
       const targetVelocity = useMemo(() => {
@@ -197,54 +179,36 @@ import {
   
       const updateDimensions = useCallback(() => {
         const containerWidth = containerRef.current?.clientWidth ?? 0;
-        const sequenceWidth =
-          seqRef.current?.getBoundingClientRect?.()?.width ?? 0;
+        const sequenceWidth = seqRef.current?.getBoundingClientRect?.()?.width ?? 0;
   
         if (sequenceWidth > 0) {
           setSeqWidth(Math.ceil(sequenceWidth));
           const copiesNeeded =
-            Math.ceil(containerWidth / sequenceWidth) +
-            ANIMATION_CONFIG.COPY_HEADROOM;
+            Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
           setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
         }
       }, []);
   
-      useResizeObserver(
-        updateDimensions,
-        [containerRef, seqRef],
-        [logos, gap, logoHeight]
-      );
-  
+      useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight]);
       useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight]);
-  
-      useAnimationLoop(
-        trackRef,
-        targetVelocity,
-        seqWidth,
-        isHovered,
-        pauseOnHover
-      );
+      useAnimationLoop(trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover);
   
       const cssVariables = useMemo(
-        () =>
-        ({
+        () => ({
           "--logoloop-gap": `${gap}px`,
           "--logoloop-logoHeight": `${logoHeight}px`,
-          ...(fadeOutColor && { "--logoloop-fadeColor": fadeOutColor }),
+          "--logoloop-fadeColor": fadeOutColor,
         }),
         [gap, logoHeight, fadeOutColor]
       );
   
-      const rootClasses = useMemo(() =>
-        cx(
-          "relative overflow-x-hidden group",
-          "[--logoloop-gap:32px]",
-          "[--logoloop-logoHeight:28px]",
-          "[--logoloop-fadeColorAuto:#ffffff]",
-          "dark:[--logoloop-fadeColorAuto:#0b0b0b]",
-          scaleOnHover && "py-[calc(var(--logoloop-logoHeight)*0.1)]",
-          className
-        ),
+      const rootClasses = useMemo(
+        () =>
+          cx(
+            "relative overflow-x-hidden group",
+            scaleOnHover && "py-[calc(var(--logoloop-logoHeight)*0.1)]",
+            className
+          ),
         [scaleOnHover, className]
       );
   
@@ -256,80 +220,79 @@ import {
         if (pauseOnHover) setIsHovered(false);
       }, [pauseOnHover]);
   
-      const renderLogoItem = useCallback((item, key) => {
-        const isNodeItem = "node" in item;
+      const renderLogoItem = useCallback(
+        (item, key) => {
+          const isNodeItem = "node" in item;
   
-        const content = isNodeItem ? (
-          <span
-            className={cx(
-              "inline-flex items-center",
-              "motion-reduce:transition-none",
-              scaleOnHover &&
-              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
-            )}
-            aria-hidden={!!item.href && !item.ariaLabel}
-          >
-            {(item).node}
-          </span>
-        ) : (
-          <img
-            className={cx(
-              "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
-              "[-webkit-user-drag:none] pointer-events-none",
-              "[image-rendering:-webkit-optimize-contrast]",
-              "motion-reduce:transition-none",
-              scaleOnHover &&
-              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
-            )}
-            src={(item).src}
-            srcSet={(item).srcSet}
-            sizes={(item).sizes}
-            width={(item).width}
-            height={(item).height}
-            alt={(item).alt ?? ""}
-            title={(item).title}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
-        );
+          const content = isNodeItem ? (
+            <span
+              className={cx(
+                "inline-flex items-center",
+                "motion-reduce:transition-none",
+                scaleOnHover &&
+                  "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
+              )}
+              aria-hidden={!!item.href && !item.ariaLabel}
+            >
+              {item.node}
+            </span>
+          ) : (
+            <img
+              className={cx(
+                "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
+                "[-webkit-user-drag:none] pointer-events-none",
+                "[image-rendering:-webkit-optimize-contrast]",
+                "motion-reduce:transition-none",
+                scaleOnHover &&
+                  "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
+              )}
+              src={item.src}
+              srcSet={item.srcSet}
+              sizes={item.sizes}
+              width={item.width}
+              height={item.height}
+              alt={item.alt ?? ""}
+              title={item.title}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          );
   
-        const itemAriaLabel = isNodeItem
-          ? (item.ariaLabel ?? item.title)
-          : (item.alt ?? item.title);
+          const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title;
   
-        const inner = (item).href ? (
-          <a
-            className={cx(
-              "inline-flex items-center no-underline rounded",
-              "transition-opacity duration-200 ease-linear",
-              "hover:opacity-80",
-              "focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2"
-            )}
-            href={(item).href}
-            aria-label={itemAriaLabel || "logo link"}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            {content}
-          </a>
-        ) : (
-          content
-        );
+          const inner = item.href ? (
+            <a
+              className={cx(
+                "inline-flex items-center no-underline rounded",
+                "transition-opacity duration-200 ease-linear",
+                "hover:opacity-80",
+                "focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2"
+              )}
+              href={item.href}
+              aria-label={itemAriaLabel || "logo link"}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {content}
+            </a>
+          ) : (
+            content
+          );
   
-        return (
-          <li
-            className={cx(
-              "flex-none mr-[var(--logoloop-gap)] text-[length:var(--logoloop-logoHeight)] leading-[1]",
-              scaleOnHover && "overflow-visible group/item"
-            )}
-            key={key}
-            role="listitem"
-          >
-            {inner}
-          </li>
-        );
-      },
+          return (
+            <li
+              className={cx(
+                "flex-none mr-[var(--logoloop-gap)] text-[length:var(--logoloop-logoHeight)] leading-[1]",
+                scaleOnHover && "overflow-visible group/item"
+              )}
+              key={key}
+              role="listitem"
+            >
+              {inner}
+            </li>
+          );
+        },
         [scaleOnHover]
       );
   
@@ -343,19 +306,19 @@ import {
               aria-hidden={copyIndex > 0}
               ref={copyIndex === 0 ? seqRef : undefined}
             >
-              {logos.map((item, itemIndex) =>
-                renderLogoItem(item, `${copyIndex}-${itemIndex}`)
-              )}
+              {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
             </ul>
           )),
         [copyCount, logos, renderLogoItem]
       );
   
-      const containerStyle = useMemo(() => ({
-        width: toCssLength(width) ?? "100%",
-        ...cssVariables,
-        ...style,
-      }),
+      const containerStyle = useMemo(
+        () => ({
+          width: toCssLength(width) ?? "100%",
+          backgroundColor: "#000000", // black background
+          ...cssVariables,
+          ...style,
+        }),
         [width, cssVariables, style]
       );
   
@@ -376,7 +339,7 @@ import {
                 className={cx(
                   "pointer-events-none absolute inset-y-0 left-0 z-[1]",
                   "w-[clamp(24px,8%,120px)]",
-                  "bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  "bg-[linear-gradient(to_right,var(--logoloop-fadeColor)_0%,rgba(0,0,0,0)_100%)]"
                 )}
               />
               <div
@@ -384,7 +347,7 @@ import {
                 className={cx(
                   "pointer-events-none absolute inset-y-0 right-0 z-[1]",
                   "w-[clamp(24px,8%,120px)]",
-                  "bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
+                  "bg-[linear-gradient(to_left,var(--logoloop-fadeColor)_0%,rgba(0,0,0,0)_100%)]"
                 )}
               />
             </>
