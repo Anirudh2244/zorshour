@@ -8,6 +8,7 @@ import LogoLoop from './LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import ScrollStack, { ScrollStackItem } from './ScrollStack'
 import AboutUs from "./AboutUs"
+import StepsSection from "./StepsSection"
 
 
 
@@ -96,6 +97,12 @@ function HeroSection() {
               </ScrollStackItem>
           </ScrollStack>
         </Col>
+        <Col className="px-20">
+  <div className="w-full overflow-hidden">
+    <StepsSection />
+  </div>
+</Col>
+
     <Footer /> 
           </div>
   )
