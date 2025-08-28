@@ -32,13 +32,14 @@ export default function AboutUs() {
 
         {/* Right: Content */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="rounded-2xl shadow-lg p-8 flex flex-col justify-center"
-          style={{ backgroundColor: darkBg }}
-        >
+  initial={{ opacity: 0, x: 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+  viewport={{ once: true, amount: 0.4 }} // 👈 triggers when 30% of section is visible
+  className="rounded-2xl shadow-lg p-8 flex flex-col justify-center"
+  style={{ backgroundColor: darkBg }}
+>
+
           {/* About Us Badge */}
           <span
             className="self-start mb-4 text-sm font-medium px-4 py-1 rounded-full"

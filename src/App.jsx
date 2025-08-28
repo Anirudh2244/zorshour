@@ -57,9 +57,7 @@ function HeroSection() {
         </h1>
         <p className=" text-center pointer-events-auto">Navigate the digital universe with strategies that drive real growth.</p>
       </Col>
-    </Col>
-    
-   <Col center={true} className={"mt-15"}>
+      <Col center={true} className={"mt-15"}>
    <p>Trusted By:</p>
       <LogoLoop
         logos={imageLogos}
@@ -73,7 +71,12 @@ function HeroSection() {
         fadeOutColor="#000000"
         ariaLabel="Technology partners"
         />
+ 
         </Col>
+    </Col>
+    
+   
+        
         <Col>
         <AboutUs />
         </Col>
