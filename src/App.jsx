@@ -6,6 +6,12 @@ import Footer from "./Footer"
 
 import LogoLoop from './LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import ScrollStack, { ScrollStackItem } from './ScrollStack'
+
+
+
+
+
 
 const techLogos = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
@@ -43,6 +49,8 @@ function HeroSection() {
       
       {/*content */}
       <Col className="relative z-10 !w-4/5 h-full justify-center pointer-events-none" center>
+      
+
         <h1 className=" text-3xl md:text-5xl font-bold text-center pointer-events-auto">
           Your North Star for Digital Marketing and Growth
         </h1>
@@ -50,8 +58,8 @@ function HeroSection() {
       </Col>
     </Col>
     
-   <Col>
-   <p>Trusted By</p>
+   <Col center={true} className={"mt-15"}>
+   <p>Trusted By:</p>
       <LogoLoop
         logos={imageLogos}
         speed={50}
@@ -65,7 +73,22 @@ function HeroSection() {
         ariaLabel="Technology partners"
         />
         </Col>
-    
+        <Col className={"relative h-100"}> 
+          <ScrollStack>
+              <ScrollStackItem itemClassName="bg-blue-500">
+                <h2>Card 1</h2>
+                <p>This is the first card in the stack</p>
+              </ScrollStackItem>
+              <ScrollStackItem itemClassName="bg-red-300">
+                <h2>Card 2</h2>
+                <p>This is the second card in the stack</p>
+              </ScrollStackItem>
+              <ScrollStackItem itemClassName="bg-gray-600">
+                <h2>Card 3</h2>
+                <p>This is the third card in the stack</p>
+              </ScrollStackItem>
+          </ScrollStack>
+        </Col>
     <Footer /> 
           </div>
   )

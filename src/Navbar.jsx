@@ -15,7 +15,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="text-xl font-bold text-white">MyApp</div>
+          <div >
+            <img
+              src="https://ik.imagekit.io/adsrc2244/Zorshour/Screenshot_2025-08-28_at_11.52.35_AM-removebg-preview.png?updatedAt=1756362288219"
+              alt="ZorShour"
+              className="h-15 w-auto"  
+            />
+          </div>
+
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-6">
