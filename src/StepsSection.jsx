@@ -29,7 +29,7 @@ export default function StepsSection() {
   ];
 
   return (
-    <section className="w-full h-auto md:h-[400px] flex flex-col md:flex-row overflow-hidden bg-black text-white gap-2">
+    <section className="w-full h-auto md:h-[400px] flex flex-col md:flex-row overflow-hidden bg-black text-white gap-4">
       {steps.map((step, index) => {
         const isActive = active === index;
         const ref = useRef(null);
@@ -83,24 +83,29 @@ export default function StepsSection() {
                   : "items-center justify-center"
               }`}
             >
+              {/* Step title */}
               <h2
                 className={`font-bold transition-all duration-500 ${
                   isActive && window.innerWidth >= 768
-                    ? "text-xl mb-2"
-                    : "text-2xl"
+                    ? "text-xl mb-2 self-start"
+                    : "text-2xl text-center"
                 }`}
               >
                 {step.title}
               </h2>
 
-              {/* Show content always on mobile, on desktop only when expanded */}
+              {/* Step content */}
               {(showContent === index && window.innerWidth >= 768) ||
               window.innerWidth < 768 ? (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: inView ? 1 : 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="text-white/80 text-sm md:text-base mt-2"
+                  transition={{ duration: 0.4, delay: isActive ? 0.2 : 0 }}
+                  className={`text-white/80 text-sm md:text-base mt-2 ${
+                    isActive && window.innerWidth >= 768
+                      ? "text-left"
+                      : "text-center flex items-center justify-center h-full"
+                  }`}
                 >
                   {step.content}
                 </motion.p>

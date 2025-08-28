@@ -81,7 +81,8 @@ function HeroSection() {
         <Col>
         <AboutUs />
         </Col>
-        <Col className={"relative h-100"}> 
+        <Col className={"relative h-100 mt-10"}> 
+        <p className="text-3xl mb-10 text-center">Our Services</p>
           <ScrollStack>
               <ScrollStackItem itemClassName="bg-blue-500">
                 <h2>Card 1</h2>
@@ -97,7 +98,8 @@ function HeroSection() {
               </ScrollStackItem>
           </ScrollStack>
         </Col>
-        <Col className="px-20">
+        <Col className="px-20 mt-10">
+        <p className="text-3xl mb-10 text-center">How we do it?</p>
   <div className="w-full overflow-hidden">
     <StepsSection />
   </div>
