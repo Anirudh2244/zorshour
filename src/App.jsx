@@ -7,6 +7,7 @@ import Footer from "./Footer"
 import LogoLoop from './LogoLoop';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 import ScrollStack, { ScrollStackItem } from './ScrollStack'
+import AboutUs from "./AboutUs"
 
 
 
@@ -72,6 +73,9 @@ function HeroSection() {
         fadeOutColor="#000000"
         ariaLabel="Technology partners"
         />
+        </Col>
+        <Col>
+        <AboutUs />
         </Col>
         <Col className={"relative h-100"}> 
           <ScrollStack>
