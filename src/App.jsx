@@ -9,6 +9,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/s
 import ScrollStack, { ScrollStackItem } from './ScrollStack'
 import AboutUs from "./AboutUs"
 import StepsSection from "./StepsSection"
+import HorizontalScroll from "./HorizontalScroll"
 
 
 
@@ -81,23 +82,29 @@ function HeroSection() {
         <Col>
         <AboutUs />
         </Col>
-        <Col className={"relative h-100 mt-10"}> 
-        <p className="text-3xl mb-10 text-center">Our Services</p>
-          <ScrollStack>
-              <ScrollStackItem itemClassName="bg-blue-500">
-                <h2>Card 1</h2>
-                <p>This is the first card in the stack</p>
-              </ScrollStackItem>
-              <ScrollStackItem itemClassName="bg-red-300">
-                <h2>Card 2</h2>
-                <p>This is the second card in the stack</p>
-              </ScrollStackItem>
-              <ScrollStackItem itemClassName="bg-gray-600">
-                <h2>Card 3</h2>
-                <p>This is the third card in the stack</p>
-              </ScrollStackItem>
-          </ScrollStack>
+        <Col>
         </Col>
+       
+  <p className="text-3xl text-center">Our Services</p>
+  <Col>
+  <HorizontalScroll />
+  </Col>
+  {/* <ScrollStack>
+    <ScrollStackItem itemClassName="bg-blue-500">
+      <h2>Card 1</h2>
+      <p>This is the first card in the stack</p>
+    </ScrollStackItem>
+    <ScrollStackItem itemClassName="bg-red-300">
+      <h2>Card 2</h2>
+      <p>This is the second card in the stack</p>
+    </ScrollStackItem>
+    <ScrollStackItem itemClassName="bg-gray-600">
+      <h2>Card 3</h2>
+      <p>This is the third card in the stack</p>
+    </ScrollStackItem>
+  </ScrollStack> */}
+
+
         <Col className="px-20 mt-10">
         <p className="text-3xl mb-10 text-center">How we do it?</p>
   <div className="w-full overflow-hidden">
