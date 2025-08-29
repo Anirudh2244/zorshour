@@ -21,7 +21,7 @@ export default function Navbar() {
               alt="ZorShour"
               className="h-15 w-auto"  
             />
-          </div>
+        </div>
 
 
           {/* Desktop Links */}

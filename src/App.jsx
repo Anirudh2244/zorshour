@@ -10,6 +10,9 @@ import ScrollStack, { ScrollStackItem } from './ScrollStack'
 import AboutUs from "./AboutUs"
 import StepsSection from "./StepsSection"
 import HorizontalScroll from "./HorizontalScroll"
+import { appendErrors } from "react-hook-form"
+
+
 
 
 
@@ -30,9 +33,9 @@ const imageLogos = [
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_w52cx4w52cx4w52c-removebg-preview.png?updatedAt=1756211420588", alt: "Company 3", href: "https://company3.com" },
 ];
 
-function HeroSection() {
+function App() {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white font-inter">
     <Navbar className=""/>
     <Col className="w-full h-[100vh] relative overflow-hidden" center={true}>
       {/* Background particles */}
@@ -40,10 +43,10 @@ function HeroSection() {
         <Particles
           className="w-full h-full z-0"
           particleColors={['#ffffff', '#ffffff']}
-          particleCount={400}
+          particleCount={150}
           particleSpread={10}
           speed={0.1}
-          particleBaseSize={100}
+          particleBaseSize={80}
           moveParticlesOnHover={true}
           alphaParticles={true}
           disableRotation={false}
@@ -59,33 +62,37 @@ function HeroSection() {
         </h1>
         <p className=" text-center pointer-events-auto">Navigate the digital universe with strategies that drive real growth.</p>
       </Col>
-      <Col center={true} className={"mt-15"}>
-   <p>Trusted By:</p>
-      <LogoLoop
-        logos={imageLogos}
-        speed={50}
-        direction="left"
-        logoHeight={75}
-        gap={40}
-        pauseOnHover
-        scaleOnHover
-        fadeOut
-        fadeOutColor="#000000"
-        ariaLabel="Technology partners"
-        />
- 
-        </Col>
     </Col>
+
     
+   
    
         
         <Col>
         <AboutUs />
         </Col>
+
+        <Col center={true} className={"mt-15"}>
+
+<p>Trusted By:</p>
+   <LogoLoop
+     logos={imageLogos}
+     speed={50}
+     direction="left"
+     logoHeight={75}
+     gap={40}
+     pauseOnHover
+     scaleOnHover
+     fadeOut
+     fadeOutColor="#000000"
+     ariaLabel="Technology partners"
+     />
+     </Col>
+     
         <Col>
         </Col>
        
-  <p className="text-3xl text-center">Our Services</p>
+  <p className="text-3xl text-center my-10">Our Services</p>
   <Col>
   <HorizontalScroll />
   </Col>
@@ -116,4 +123,4 @@ function HeroSection() {
           </div>
   )
 }
-export default HeroSection
+export default App
