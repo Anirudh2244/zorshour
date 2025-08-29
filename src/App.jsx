@@ -37,7 +37,7 @@ const imageLogos = [
 function App() {
   return (
     <div className="bg-black text-white font-inter">
-    <Navbar className=""/>
+    <Navbar />
 
     <Col className="w-full h-[100vh] relative overflow-hidden bg-gray-950" center={true}>
   {/* Background particles */}

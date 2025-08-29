@@ -54,11 +54,11 @@
 
 @keyframes subtle-pulse-glow {
   0%, 100% {
-    color: #e3b071; 
+    color: #edb36b; 
     text-shadow: 0 0 3px rgba(255, 140, 0, 0.4), 0 0 8px rgba(255, 140, 0, 0.2); 
   }
   50% {
-    color: #FFE0B2; 
+    color: #f9ebd5; 
     text-shadow: 0 0 10px rgba(255, 140, 0, 0.6), 0 0 20px rgba(255, 140, 0, 0.4); 
   }
 }
