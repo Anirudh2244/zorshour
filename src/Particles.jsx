@@ -120,7 +120,7 @@ const Particles = ({
     };
 
     if (moveParticlesOnHover) {
-      container.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove); // The fix is here
     }
 
     const count = particleCount;
@@ -200,7 +200,7 @@ const Particles = ({
     return () => {
       window.removeEventListener("resize", resize);
       if (moveParticlesOnHover) {
-        container.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mousemove", handleMouseMove); // And here
       }
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {

@@ -45,10 +45,10 @@ function App() {
     <Particles
       className="w-full h-full"
       particleColors={['#B7410E', '#e5e7eb']}
-      particleCount={150}
+      particleCount={200}
       particleSpread={10}
       speed={0.1}
-      particleBaseSize={80}
+      particleBaseSize={100}
       moveParticlesOnHover={true}
       alphaParticles={true}
       disableRotation={false}
