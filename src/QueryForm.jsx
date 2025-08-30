@@ -14,7 +14,7 @@ const QueryFormSection = () => {
           viewport={{ once: false, amount: 0.3 }}
         >
           {/* Left Side - Icon */}
-          <div className="md:w-3/10 w-full bg-black/60 flex justify-center items-center p-8">
+          <div className="md:w-[30%] w-full bg-black/60 flex justify-center items-center p-8">
             <div className="relative w-56 h-56 flex justify-center items-center">
               <div className="absolute w-full h-full rounded-full bg-gradient-to-tr from-orange-400/15 to-white/5 animate-pulse"></div>
               <Rocket className="w-32 h-32 text-orange-400/80 animate-bounce-slow" />
@@ -22,7 +22,7 @@ const QueryFormSection = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="md:w-7/10 w-full bg-black/60 p-8 space-y-6">
+          <div className="md:w-[70%] w-full bg-black/60 p-8 space-y-6">
             <motion.h2
               className="text-3xl font-extrabold mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -82,6 +82,15 @@ const QueryFormSection = () => {
               >
                 Submit Query
               </button>
+              <p className="mt-3 text-sm text-gray-400 text-center">
+                Or mail us at{" "}
+                <a
+                  href="mailto:test@zorshour.com"
+                  className="text-orange-400 hover:text-orange-500 transition-colors duration-300"
+                >
+                  test@zorshour.com
+                </a>
+              </p>
             </div>
           </div>
         </motion.div>
