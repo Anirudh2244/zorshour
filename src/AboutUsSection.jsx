@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import ShimmerBorder from "./ShimmerBorder"; // import your shimmer button
 
 const AboutUsSection = () => {
   const containerVariants = {
@@ -17,21 +18,22 @@ const AboutUsSection = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const imageUrl = "https://images.unsplash.com/photo-1756370473190-4c41ddbd5e59?q=80&w=392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  const imageUrl =
+    "https://images.unsplash.com/photo-1756370473190-4c41ddbd5e59?q=80&w=392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   return (
     <section className="relative py-16 md:py-24 bg-black text-white overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 max-w-7xl">
-        {/* "About Us" Tag */}
+        {/* "About Us" Shimmer Tag */}
         <motion.div
-          className="mb-8"
+          className="mb-8 inline-block"
           initial="hidden"
           animate="visible"
           variants={itemVariants}
         >
-          <span className="inline-block bg-gray-700 text-white text-sm px-4 py-2 rounded-full font-semibold">
-            About Us
-          </span>
+          <ShimmerBorder shimmerStyle="container" className="px-6 py-2 rounded-full">
+            <span className="text text-sm font-semibold">About Us</span>
+          </ShimmerBorder>
         </motion.div>
 
         {/* Main Heading */}
@@ -41,12 +43,11 @@ const AboutUsSection = () => {
           animate="visible"
           variants={itemVariants}
         >
-          As a Forward-Thinking Digital Agency, We Specialize in{' '}
+          As a Forward-Thinking Digital Agency, We Specialize in{" "}
           <span className="text-orange-400">Creative Solutions.</span>
         </motion.h2>
 
         <div className="flex flex-col md:flex-row items-center md:items-end gap-4">
-  
           <div className="w-full md:w-1/2 flex justify-start items-center h-[100px] md:min-h-[300px] relative">
             {/* The Half-Circle */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px] -ml-[100px] md:w-[300px] md:h-[300px] md:-ml-[150px] mt-20">
@@ -55,9 +56,9 @@ const AboutUsSection = () => {
               <div
                 className="absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full bg-cover bg-center"
                 style={{
-                  left: 'calc(50% + 80%)',
-                  top: 'calc(50% - 25%)',
-                  transform: 'translate(-50%, -50%)',
+                  left: "calc(50% + 80%)",
+                  top: "calc(50% - 25%)",
+                  transform: "translate(-50%, -50%)",
                   backgroundImage: `url(${imageUrl})`,
                 }}
               ></div>
@@ -73,23 +74,27 @@ const AboutUsSection = () => {
             variants={containerVariants}
           >
             <motion.p variants={itemVariants}>
-              At ZorShour, we believe marketing should do more than look good, it should work. Our strategies increase your visibility, connect you with the right audience, and drive your goals with precision. Backed by data and fueled by creativity, we turn ideas into measurable growth, making every campaign shine as bright as your ambition.
+              At ZorShour, we believe marketing should do more than look good, it
+              should work. Our strategies increase your visibility, connect you
+              with the right audience, and drive your goals with precision.
+              Backed by data and fueled by creativity, we turn ideas into
+              measurable growth, making every campaign shine as bright as your
+              ambition.
             </motion.p>
             <motion.p variants={itemVariants}>
-              Because in the end, it’s not just about marketing - it’s about results.
+              Because in the end, it’s not just about marketing - it’s about
+              results.
             </motion.p>
-            
-            {/* Get Started Button */}
+
+            {/* Get Started Shimmer Button */}
             <motion.div variants={itemVariants} className="pt-6">
-              <button className="px-6 py-3 text-white font-semibold rounded-full bg-gray-600 hover:bg-gray-700 transition-colors duration-300">
-                Get Started
-              </button>
+              <ShimmerBorder shimmerStyle="container" className="px-6 py-3 rounded-full">
+                <span className="text font-semibold">Get Started</span>
+              </ShimmerBorder>
             </motion.div>
           </motion.div>
         </div>
       </div>
-  
-
     </section>
   );
 };

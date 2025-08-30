@@ -11,6 +11,7 @@ import HorizontalScroll from "./HorizontalScroll"
 import { appendErrors } from "react-hook-form"
 import AboutUsSection from "./AboutUsSection"
 import HeroSection from "./HeroSection"
+import ShimmerBorder from "./ShimmerBorder";
 
 
 // Alternative with image sources
@@ -31,14 +32,23 @@ function App() {
    <AboutUsSection />
    
         
-        <Col>
+        {/* <Col>
         <AboutUs />
         
-        </Col>
+        </Col> */}
+       <div className="flex flex-col gap-4 items-center justify-center min-h-screen bg-red">
 
-        <Col center={true} className={"mt-15"}>
 
-<p>Trusted By:</p>
+      {/* Tailwind controlled size */}
+      <ShimmerBorder shimmerStyle="container" className="w-60 h-14 rounded-xl">
+        <span className="text text-lg">Responsive Button</span>
+      </ShimmerBorder>
+    </div>
+
+
+        <Col center={true} className={"mt-10"}>
+
+{/* <p>Trusted By:</p> */}
    <LogoLoop
      logos={imageLogos}
      speed={50}
