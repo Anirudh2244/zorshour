@@ -13,6 +13,7 @@ import AboutUsSection from "./AboutUsSection"
 import HeroSection from "./HeroSection"
 import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
+import QueryForm from "./QueryForm";
 
 
 // Alternative with image sources
@@ -81,6 +82,7 @@ function App() {
   </div>
 </Col> */}
 <PhilosophySection />
+<QueryForm />
     <Footer /> 
           </div>
   )
