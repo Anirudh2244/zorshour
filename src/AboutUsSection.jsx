@@ -42,7 +42,7 @@ const AboutUsSection = () => {
           variants={itemVariants}
         >
           As a Forward-Thinking Digital Agency, We Specialize in{' '}
-          <span className="text-gray-400">Creative Solutions.</span>
+          <span className="text-orange-400">Creative Solutions.</span>
         </motion.h2>
 
         <div className="flex flex-col md:flex-row items-center md:items-end gap-4">
@@ -50,7 +50,7 @@ const AboutUsSection = () => {
           <div className="w-full md:w-1/2 flex justify-start items-center h-[100px] md:min-h-[300px] relative">
             {/* The Half-Circle */}
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px] -ml-[100px] md:w-[300px] md:h-[300px] md:-ml-[150px] mt-20">
-              <div className="w-full h-full rounded-full bg-gray-700 opacity-50"></div>
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-zinc-900 to-orange-400 opacity-30"></div>
               {/* Image Circle */}
               <div
                 className="absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full bg-cover bg-center"
@@ -88,6 +88,8 @@ const AboutUsSection = () => {
           </motion.div>
         </div>
       </div>
+  
+
     </section>
   );
 };

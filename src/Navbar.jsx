@@ -47,14 +47,14 @@ export default function Navbar() {
           <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
             <a
               href="#"
-              className="hidden md:block bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-[#B7410E] hover:text-white transition-colors duration-300"
+              className="hidden md:block bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
             >
               Get a Quote
             </a>
             
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-white focus:outline-none text-3xl md:text-4xl"
+              className="text-white hover:text-orange-400 focus:outline-none text-3xl md:text-4xl"
               aria-label="Toggle mobile menu"
             >
               {isOpen ? "✕" : "☰"}
@@ -84,7 +84,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 style={style}
-                className="block text-center mt-4 bg-white text-gray-950 font-semibold py-2 px-6 rounded-full"
+                className="block text-center mt-4 bg-white hover:bg-orange-400  hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
