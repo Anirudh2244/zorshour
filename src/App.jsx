@@ -25,22 +25,15 @@ function App() {
   return (
     <div className="bg-black text-white font-inter">
     <Navbar />
-
-  <HeroSection />
-
-
-   <AboutUsSection />
-   
-        
-        {/* <Col>
+    <HeroSection />
+    <AboutUsSection />
+      {/* <Col>
         <AboutUs />
-        
-        </Col> */}
-       <div className="flex flex-col gap-4 items-center justify-center min-h-screen bg-red">
-    </div>
+      </Col> */}
+      
 
 
-        <Col center={true} className={"mt-10"}>
+    <Col center={true} className={""}>
 
 {/* <p>Trusted By:</p> */}
    <LogoLoop

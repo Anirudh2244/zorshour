@@ -22,7 +22,7 @@ const AboutUsSection = () => {
     "https://images.unsplash.com/photo-1756370473190-4c41ddbd5e59?q=80&w=392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   return (
-    <section className="relative py-16 md:py-24 bg-black text-white overflow-hidden">
+    <section className="relative pt-12  bg-black text-white overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 max-w-7xl">
         {/* "About Us" Shimmer Tag */}
         <motion.div
@@ -68,7 +68,7 @@ const AboutUsSection = () => {
 
           {/* Text Content */}
           <motion.div
-            className="w-full md:w-1/2 space-y-6 text-xl text-gray-200 mt-20 z-10 md:mt-0 pr-4"
+            className="w-full md:w-1/2 space-y-6 text-xl text-gray-200 mt-20 z-10 md:mt-0 pr-4 md:pr-12"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
@@ -88,7 +88,7 @@ const AboutUsSection = () => {
 
             {/* Get Started Shimmer Button */}
             <motion.div variants={itemVariants} className="pt-6">
-              <ShimmerBorder shimmerStyle="container" className="px-6 py-3 rounded-full">
+              <ShimmerBorder shimmerStyle="container" className="px-6 mb-3 rounded-full">
                 <span className="text font-semibold">Get Started</span>
               </ShimmerBorder>
             </motion.div>
