@@ -54,7 +54,9 @@ export default function Navbar() {
             
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-orange-400 focus:outline-none text-3xl md:text-4xl"
+              className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${
+                isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
+              }`}
               aria-label="Toggle mobile menu"
             >
               {isOpen ? "✕" : "☰"}
@@ -84,7 +86,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 style={style}
-                className="block text-center mt-4 bg-white hover:bg-orange-400  hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full"
+                className="block text-center mt-4 bg-white hover:bg-orange-400 hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

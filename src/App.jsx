@@ -12,6 +12,7 @@ import { appendErrors } from "react-hook-form"
 import AboutUsSection from "./AboutUsSection"
 import HeroSection from "./HeroSection"
 import ShimmerBorder from "./ShimmerBorder";
+import PhilosophySection from "./PhilosophySection";
 
 
 // Alternative with image sources
@@ -73,13 +74,13 @@ function App() {
   </ScrollStack> */}
 
 
-        <Col className="px-20 mt-10">
+        {/* <Col className="px-20 mt-10">
         <p className="text-3xl mb-10 text-center">How we do it?</p>
   <div className="w-full overflow-hidden">
     <StepsSection />
   </div>
-</Col>
-
+</Col> */}
+<PhilosophySection />
     <Footer /> 
           </div>
   )
