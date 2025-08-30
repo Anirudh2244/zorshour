@@ -39,11 +39,7 @@ function App() {
        <div className="flex flex-col gap-4 items-center justify-center min-h-screen bg-red">
 
 
-      {/* Tailwind controlled size */}
-      <ShimmerBorder shimmerStyle="container" className="w-60 h-14 rounded-xl">
-        <span className="text text-lg">Responsive Button</span>
-      </ShimmerBorder>
-    </div>
+   
 
 
         <Col center={true} className={"mt-10"}>
