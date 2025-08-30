@@ -1,19 +1,30 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-black p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <footer className="bg-black text-gray-300 py-8">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Left side */}
-        <p>© {new Date().getFullYear()} MyApp</p>
+        <p className="text-sm md:text-base">
+          © {new Date().getFullYear()} ZorShour. All rights reserved.
+        </p>
 
         {/* Right side */}
-        <div className="flex space-x-4">
-          <a href="#" className="hover:text-white">
+        <div className="flex space-x-6">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-orange-400 transition-colors duration-300"
+          >
             Privacy
           </a>
-          <a href="#" className="hover:text-white">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-orange-400 transition-colors duration-300"
+          >
             Terms
           </a>
-          <a href="#" className="hover:text-white">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-orange-400 transition-colors duration-300"
+          >
             Contact
           </a>
         </div>
