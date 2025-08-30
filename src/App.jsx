@@ -37,9 +37,7 @@ function App() {
         
         </Col> */}
        <div className="flex flex-col gap-4 items-center justify-center min-h-screen bg-red">
-
-
-   
+    </div>
 
 
         <Col center={true} className={"mt-10"}>
