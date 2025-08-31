@@ -70,14 +70,14 @@ const PhilosophySection = () => {
               viewport={{ once: false, amount: 0.3 }}
               variants={cardVariants}
             >
-              {/* Subtle Glow Border Layer */}
+              {/* Border Layer */}
               <div
                 className="absolute inset-0 rounded-2xl border border-orange-400/40 
                            opacity-0 group-hover:opacity-100 
                            transition-opacity duration-500 ease-out pointer-events-none"
               ></div>
 
-              {/* Subtle Glow Shadow Layer */}
+              {/* Shadow Layer */}
               <div
                 className="absolute inset-0 rounded-2xl shadow-[0_0_20px_rgba(251,146,60,0.15)] 
                            opacity-0 group-hover:opacity-100 

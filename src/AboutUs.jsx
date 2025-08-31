@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 export default function AboutUs() {
-  const darkBg = "#111111"; // subtle dark background (different from full black)
+  const darkBg = "#111111";
 
   return (
     <section
@@ -18,7 +18,7 @@ export default function AboutUs() {
       </div>
 
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        
+
         {/* Left: Image */}
         <div className="overflow-hidden rounded-2xl shadow-lg">
           <motion.img
@@ -32,13 +32,13 @@ export default function AboutUs() {
 
         {/* Right: Content */}
         <motion.div
-  initial={{ opacity: 0, x: 50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  viewport={{ once: true, amount: 0.4 }} // 👈 triggers when 30% of section is visible
-  className="rounded-2xl shadow-lg p-8 flex flex-col justify-center"
-  style={{ backgroundColor: darkBg }}
->
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.4 }}
+          className="rounded-2xl shadow-lg p-8 flex flex-col justify-center"
+          style={{ backgroundColor: darkBg }}
+        >
 
           {/* About Us Badge */}
           <span
@@ -52,7 +52,7 @@ export default function AboutUs() {
             Illuminating Brands with Precision
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-white/80">
-          We’re a team of marketers, creatives, and strategists helping brands shine in the digital universe. Through innovation, data-driven precision, and storytelling, we increase visibility, spark meaningful connections, and guide growth, like a North Star in the vast digital galaxy.
+            We’re a team of marketers, creatives, and strategists helping brands shine in the digital universe. Through innovation, data-driven precision, and storytelling, we increase visibility, spark meaningful connections, and guide growth, like a North Star in the vast digital galaxy.
           </p>
 
           <button

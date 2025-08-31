@@ -20,15 +20,15 @@ function HeroSection() {
           disableRotation={false}
         />
       </div>
-{/* center content */}
+      {/* center content */}
       <Col className="relative z-10 w-full h-full justify-center items-center text-center px-4">
         <div className="max-w-4xl mx-auto pointer-events-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4
                    text-white drop-shadow-md">
-            Your North Star for Digital Marketing 
+            Your North Star for Digital Marketing
           </h1>
           <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Navigate the digital universe with 
+            Navigate the digital universe with
             <span className="text-orange-400 font-bold animate-subtle-pulse-glow text-xl md:text-2xl"> the strategies that illuminate your path</span> to real, sustainable growth.
           </p>
 

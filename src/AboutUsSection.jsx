@@ -41,8 +41,8 @@ const AboutUsSection = () => {
           variants={textStagger}
           custom={2}
         >
-          {/* As a Forward-Thinking Digital Agency, We Specialize in */}
-          Guided by creativity and powered by data, we help brands find their      
+
+          Guided by creativity and powered by data, we help brands find their
           <span className="text-orange-400"> True North in Growth.</span>
         </motion.h2>
 

@@ -120,7 +120,7 @@ const Particles = ({
     };
 
     if (moveParticlesOnHover) {
-      window.addEventListener("mousemove", handleMouseMove); // The fix is here
+      window.addEventListener("mousemove", handleMouseMove); 
     }
 
     const count = particleCount;
@@ -200,14 +200,13 @@ const Particles = ({
     return () => {
       window.removeEventListener("resize", resize);
       if (moveParticlesOnHover) {
-        window.removeEventListener("mousemove", handleMouseMove); // And here
+        window.removeEventListener("mousemove", handleMouseMove); 
       }
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     particleCount,
     particleSpread,

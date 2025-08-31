@@ -12,11 +12,11 @@ export default function Navbar() {
 
   const allMenuItems = [
     ...links.map(link => ({ type: 'link', ...link })),
-    { 
-      name: 'Get in Touch', 
-      href: 'https://wa.me/918696871001?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F', 
-      type: 'button', 
-      target: '_blank' 
+    {
+      name: 'Get in Touch',
+      href: 'https://wa.me/918696871001?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F',
+      type: 'button',
+      target: '_blank'
     }
   ];
 
@@ -57,12 +57,11 @@ export default function Navbar() {
             >
               Get in Touch
             </a>
-            
+
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${
-                isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
-              }`}
+              className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
+                }`}
               aria-label="Toggle mobile menu"
             >
               {isOpen ? "✕" : "☰"}
@@ -72,8 +71,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Dropdown */}
-      <animated.div 
-        style={menuSpring} 
+      <animated.div
+        style={menuSpring}
         className="absolute top-20 left-0 w-full bg-gray-950"
       >
         <div className="px-4 pb-4 space-y-4">
@@ -93,8 +92,8 @@ export default function Navbar() {
               <animated.a
                 key={item.name}
                 href={item.href}
-                target={item.target || "_self"}       
-                rel={item.target === "_blank" ? "noopener noreferrer" : undefined} 
+                target={item.target || "_self"}
+                rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
                 style={style}
                 className="block text-center mt-4 bg-white hover:bg-orange-400 hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full"
                 onClick={() => setIsOpen(false)}
