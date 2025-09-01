@@ -20,7 +20,6 @@ function HeroSection() {
           disableRotation={false}
         />
       </div>
-      {/* center content */}
       <Col className="relative z-10 w-full h-full justify-center items-center text-center px-4">
         <div className="max-w-4xl mx-auto pointer-events-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4
