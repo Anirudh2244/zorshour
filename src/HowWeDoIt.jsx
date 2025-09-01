@@ -62,7 +62,7 @@ const HowWeDoIt = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                 >
                     Our Cosmic <span className="text-orange-400">Trajectory</span>
                 </motion.h2>
@@ -76,7 +76,7 @@ const HowWeDoIt = () => {
                                 custom={i}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: false, amount: 0.5 }}
+                                viewport={{ once: true, amount: 0.5 }}
                                 variants={itemVariants}
                             >
                                 <h3 className="text-4xl md:text-3xl lg:text-5xl font-extrabold text-neutral-200">
@@ -90,7 +90,7 @@ const HowWeDoIt = () => {
                                     custom={i}
                                     initial="hidden"
                                     whileInView="visible"
-                                    viewport={{ once: false, amount: 0.5 }}
+                                    viewport={{ once: true, amount: 0.5 }}
                                     variants={itemVariants}
                                     className="mb-4"
                                 >
@@ -108,7 +108,7 @@ const HowWeDoIt = () => {
                                         className="w-full h-px bg-neutral-700 mt-8 md:mt-12"
                                         initial="hidden"
                                         whileInView="visible"
-                                        viewport={{ once: false, amount: 0.5 }}
+                                        viewport={{ once: true, amount: 0.5 }}
                                         variants={dividerVariants}
                                     ></motion.div>
                                 )}

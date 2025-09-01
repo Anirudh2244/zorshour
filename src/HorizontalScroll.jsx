@@ -191,7 +191,7 @@ const DesktopScroll = () => {
                 className="w-1/2 flex flex-col items-center justify-center p-8 md:p-16 text-white bg-[#111]"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 variants={textStagger}
               >
                 <motion.img
@@ -200,7 +200,7 @@ const DesktopScroll = () => {
                   className="h-[60vh] object-contain rounded-lg shadow-lg"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1.05 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
                 />
                 <motion.h2
@@ -217,7 +217,7 @@ const DesktopScroll = () => {
                 className={`w-1/2 flex items-center justify-center p-8 md:p-16 text-white ${service.color}`}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 variants={textStagger}
               >
                 <div className="text-center">

@@ -48,7 +48,7 @@ const PhilosophySection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           Our Philosophy, &nbsp;
           <span className="text-orange-400">Our North Star.</span>
@@ -67,7 +67,7 @@ const PhilosophySection = () => {
               custom={i}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
             >
               {/* Border Layer */}

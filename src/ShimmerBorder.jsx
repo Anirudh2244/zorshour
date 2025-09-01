@@ -41,7 +41,9 @@ const ShimmerBorder = ({
         <span className="spark"></span>
       </span>
       <span className="backdrop"></span>
-      {children}
+      <span className="text">
+        {children}
+      </span>
     </button>
   );
 };

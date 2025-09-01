@@ -23,7 +23,7 @@ const AboutUsSection = () => {
           className="mb-8 inline-block"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           variants={textStagger}
           custom={1}
         >
@@ -34,10 +34,10 @@ const AboutUsSection = () => {
 
         {/* Main Heading */}
         <motion.h2
-          className="text-3xl md:text-4xl md:text-5xl font-extrabold max-w-4xl leading-tight mb-12"
+          className="text-3xl md:text-4xl md:text-5xl font-extrabold max-w-4xl leading-tight mb-12 md:mb-8"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           variants={textStagger}
           custom={2}
         >
@@ -52,7 +52,7 @@ const AboutUsSection = () => {
             className="w-full md:w-1/2 flex justify-start items-center h-[100px] md:min-h-[300px] relative pb-10 md:pb-100"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1.05 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             {/* The Half-Circle */}
@@ -74,10 +74,10 @@ const AboutUsSection = () => {
 
           {/* Right Text Section */}
           <motion.div
-            className="w-full md:w-1/2 space-y-6 text-xl text-gray-200 mt-20 z-10 md:mt-0 pr-4 md:pr-12"
+            className="w-full md:w-1/2 space-y-6 text-xl text-gray-200 mt-24 z-10 md:mt-0 pr-4 md:pr-12"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
             variants={textStagger}
           >
             <motion.p variants={textStagger} custom={1}>
