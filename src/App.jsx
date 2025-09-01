@@ -11,6 +11,7 @@ import HeroSection from "./HeroSection"
 import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
+import HowWeDoIt from "./HowWeDoIt";
 
 
 const imageLogos = [
@@ -46,6 +47,7 @@ function App() {
       <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
       <HorizontalScroll />
       <PhilosophySection />
+      <HowWeDoIt />
       <QueryForm />
       <Footer />
     </div>
