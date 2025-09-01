@@ -77,29 +77,20 @@ const MobileCarousel = () => {
           }}
         >
           {/* Top Section */}
-          <div className="w-full h-1/2 flex flex-col items-center justify-center p-8 text-white bg-[#111]">
+          <div className="w-full h-[40%] flex flex-col items-center justify-center p-8 text-white bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
-              className="h-[30vh] object-contain rounded-lg shadow-lg"
+              className="h-[30vh] object-contain shadow-lg"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
-            <motion.h2
-              className="text-2xl mt-4 font-bold"
-              variants={textStagger}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-            >
-              {services[currentSlide].heading}
-            </motion.h2>
           </div>
 
-          {/* Bottom Section */}
+          {/* Bottom Section*/}
           <div
-            className={`w-full h-1/2 flex items-center justify-center p-8 text-white ${services[currentSlide].color}`}
+            className={`w-full h-[60%] flex items-center justify-center p-8 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg`}
           >
             <motion.div
               className="text-center"
@@ -188,7 +179,7 @@ const DesktopScroll = () => {
             >
               {/* Left Section */}
               <motion.div
-                className="w-1/2 flex flex-col items-center justify-center p-8 md:p-16 text-white bg-[#111]"
+                className="w-[40%] flex flex-col items-center justify-center p-8 md:p-16 text-white bg-black shadow-lg"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
@@ -197,24 +188,17 @@ const DesktopScroll = () => {
                 <motion.img
                   src={service.contentImage}
                   alt={service.title}
-                  className="h-[60vh] object-contain rounded-lg shadow-lg"
+                  className="h-[60vh] object-contain shadow-lg"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1.05 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
                 />
-                <motion.h2
-                  className="text-4xl mt-4 font-bold"
-                  variants={textStagger}
-                  custom={1}
-                >
-                  {service.heading}
-                </motion.h2>
               </motion.div>
 
               {/* Right Section */}
               <motion.div
-                className={`w-1/2 flex items-center justify-center p-8 md:p-16 text-white ${service.color}`}
+                className={`w-[60%] flex items-center justify-center p-8 md:p-16 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
@@ -244,6 +228,7 @@ const DesktopScroll = () => {
     </div>
   );
 };
+
 
 export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
