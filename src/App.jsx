@@ -44,9 +44,10 @@ function App() {
           ariaLabel="Technology partners"
         />
       </Col>
+      <PhilosophySection />
       <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
       <HorizontalScroll />
-      <PhilosophySection />
+      
       <HowWeDoIt />
       <QueryForm />
       <Footer />
