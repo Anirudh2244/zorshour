@@ -14,7 +14,7 @@ export default function Navbar() {
     ...links.map(link => ({ type: 'link', ...link })),
     {
       name: 'Get in Touch',
-      href: 'https://wa.me/918696871001?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F',
+      href: 'https://wa.me/919829707705?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F',
       type: 'button',
       target: '_blank'
     }
@@ -50,7 +50,7 @@ export default function Navbar() {
 
           <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
             <a
-              href="https://wa.me/918696871001?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F"
+              href="https://wa.me/919829707705?text=Hello%20ZorShour%20team%20%E2%80%93%20I%20am%20interested%20in%20discussing%20digital%20marketing%20services%20and%20exploring%20how%20we%20can%20grow%20my%20business.%20Could%20we%20schedule%20a%20call%3F"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:block bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"

@@ -89,7 +89,7 @@ const QueryFormSection = () => {
                   href="mailto:test@zorshour.com"
                   className="text-orange-400 hover:text-orange-500 transition-colors duration-300"
                 >
-                  test@zorshour.com
+                  namit@zorshour.com
                 </a>
               </p>
             </div>
