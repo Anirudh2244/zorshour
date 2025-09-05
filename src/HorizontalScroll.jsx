@@ -76,19 +76,19 @@ const MobileCarousel = () => {
             }
           }}
         >
-          {/* Top Section */}
+          {/* Top Section - 40% height */}
           <div className="w-full h-[40%] flex flex-col items-center justify-center p-8 text-white bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
-              className="h-[30vh] object-contain shadow-lg"
+              className="h-[30vh] object-contain shadow-lg rounded-lg"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
           </div>
 
-          {/* Bottom Section*/}
+          {/* Bottom Section - 60% height */}
           <div
             className={`w-full h-[60%] flex items-center justify-center p-8 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg`}
           >
@@ -175,11 +175,11 @@ const DesktopScroll = () => {
           {services.map((service, idx) => (
             <section
               key={idx}
-              className="flex-shrink-0 w-screen h-screen flex md:flex-row"
+              className="flex-shrink-0 w-screen h-full flex md:flex-row"
             >
-              {/* Left Section */}
+              {/* Left Section (50% width) */}
               <motion.div
-                className="w-[40%] flex flex-col items-center justify-center p-8 md:p-16 text-white bg-black shadow-lg"
+                className="w-1/2 flex flex-col items-center justify-center p-8 md:p-16 text-white bg-black shadow-lg"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
@@ -188,7 +188,7 @@ const DesktopScroll = () => {
                 <motion.img
                   src={service.contentImage}
                   alt={service.title}
-                  className="h-[60vh] object-contain shadow-lg"
+                  className="h-[60vh] object-contain shadow-lg rounded-lg" 
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1.05 }}
                   viewport={{ once: true, amount: 0.5 }}
@@ -196,9 +196,9 @@ const DesktopScroll = () => {
                 />
               </motion.div>
 
-              {/* Right Section */}
+              {/* Right Section (50% width) */}
               <motion.div
-                className={`w-[60%] flex items-center justify-center p-8 md:p-16 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg`}
+                className={`w-1/2 flex items-center justify-center p-8 md:p-16 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg`}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
