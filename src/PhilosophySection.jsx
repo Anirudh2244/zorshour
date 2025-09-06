@@ -76,24 +76,24 @@ const updateCardGlowProperties = (card, mouseX, mouseY, glow, radius) => {
 };
 
 const useIntersectionObserver = (ref, options) => {
-    const [isIntersecting, setIntersecting] = useState(false);
-    
-    useEffect(() => {
-        if (!ref.current) return;
-        const observer = new IntersectionObserver(([entry]) => {
-            setIntersecting(entry.isIntersecting);
-        }, options);
+  const [isIntersecting, setIntersecting] = useState(false);
 
-        observer.observe(ref.current);
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIntersecting(entry.isIntersecting);
+    }, options);
 
-        return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
-        };
-    }, [ref, options]);
+    observer.observe(ref.current);
 
-    return isIntersecting;
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref, options]);
+
+  return isIntersecting;
 };
 
 const ParticleCard = ({
@@ -108,10 +108,9 @@ const ParticleCard = ({
   enableMagnetism = false
 }) => {
   const cardRef = useRef(null);
-  const isIntersecting = useIntersectionObserver(cardRef, { threshold: 0.8 });
+  const isIntersecting = useIntersectionObserver(cardRef, { threshold: 0.9 });
   const particlesRef = useRef([]);
   const timeoutsRef = useRef([]);
-  const isHoveredRef = useRef(false);
   const memoizedParticles = useRef([]);
   const particlesInitialized = useRef(false);
   const magnetismAnimationRef = useRef(null);
@@ -124,7 +123,7 @@ const ParticleCard = ({
     );
     particlesInitialized.current = true;
   }, [particleCount, glowColor]);
-  
+
   const clearAllParticles = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
@@ -144,13 +143,13 @@ const ParticleCard = ({
   }, []);
 
   const animateParticles = useCallback(() => {
-    if (!cardRef.current || !isHoveredRef.current) return;
+    if (!cardRef.current) return;
     if (!particlesInitialized.current) {
       initializeParticles();
     }
     memoizedParticles.current.forEach((particle, index) => {
       const timeoutId = setTimeout(() => {
-        if (!isHoveredRef.current || !cardRef.current) return;
+        if (!cardRef.current) return;
         const clone = particle.cloneNode(true);
         cardRef.current.appendChild(clone);
         particlesRef.current.push(clone);
@@ -180,9 +179,8 @@ const ParticleCard = ({
     const element = cardRef.current;
     if (!element) return;
 
-    // These functions handle the core animation logic
-    const handleStartAnimation = () => {
-      isHoveredRef.current = true;
+    const startAnimations = () => {
+      element.classList.add('is-active');
       animateParticles();
       if (enableTilt) {
         gsap.to(element, { rotateX: 5, rotateY: 5, duration: 0.3, ease: 'power2.out', transformPerspective: 1000 });
@@ -192,8 +190,8 @@ const ParticleCard = ({
       }
     };
 
-    const handleStopAnimation = () => {
-      isHoveredRef.current = false;
+    const stopAnimations = () => {
+      element.classList.remove('is-active');
       clearAllParticles();
       if (enableTilt) {
         gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.3, ease: 'power2.out' });
@@ -203,8 +201,7 @@ const ParticleCard = ({
       }
     };
 
-    // Desktop logic: Mouse event listeners
-    if (!disableAnimations) {
+    if (!disableAnimations) { // Desktop Logic
       const handleMouseMove = e => {
         if (!enableTilt && !enableMagnetism) return;
         const rect = element.getBoundingClientRect();
@@ -254,26 +251,24 @@ const ParticleCard = ({
           { scale: 1, opacity: 0, duration: 0.8, ease: 'power2.out', onComplete: () => ripple.remove() }
         );
       };
-      
-      element.addEventListener('mouseenter', handleStartAnimation);
-      element.addEventListener('mouseleave', handleStopAnimation);
+
+      element.addEventListener('mouseenter', startAnimations);
+      element.addEventListener('mouseleave', stopAnimations);
       element.addEventListener('mousemove', handleMouseMove);
       element.addEventListener('click', handleClick);
 
       return () => {
-        isHoveredRef.current = false;
-        element.removeEventListener('mouseenter', handleStartAnimation);
-        element.removeEventListener('mouseleave', handleStopAnimation);
+        stopAnimations();
+        element.removeEventListener('mouseenter', startAnimations);
+        element.removeEventListener('mouseleave', stopAnimations);
         element.removeEventListener('mousemove', handleMouseMove);
         element.removeEventListener('click', handleClick);
-        clearAllParticles();
       };
-    } else {
-      // Mobile logic: IntersectionObserver
+    } else { // Mobile Logic
       if (isIntersecting) {
-        handleStartAnimation();
+        startAnimations();
       } else {
-        handleStopAnimation();
+        stopAnimations();
       }
     }
   }, [disableAnimations, isIntersecting, animateParticles, clearAllParticles, enableTilt, enableMagnetism, clickEffect, glowColor]);
@@ -291,13 +286,14 @@ const ParticleCard = ({
 
 const GlobalSpotlight = ({
   gridRef,
-  disableAnimations = false,
   enabled = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   glowColor = DEFAULT_GLOW_COLOR_CSS
 }) => {
   const spotlightRef = useRef(null);
   const isInsideSection = useRef(false);
+  const isMobile = useMobileDetection();
+  const disableAnimations = isMobile;
 
   useEffect(() => {
     if (disableAnimations || !gridRef?.current || !enabled) return;
@@ -362,10 +358,10 @@ const GlobalSpotlight = ({
         ease: 'power2.out'
       });
       const targetOpacity = minDistance <= proximity
-          ? 0.8
-          : minDistance <= fadeDistance
-            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
-            : 0;
+        ? 0.8
+        : minDistance <= fadeDistance
+          ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
+          : 0;
       gsap.to(spotlightRef.current, {
         opacity: targetOpacity,
         duration: targetOpacity > 0 ? 0.2 : 0.5,
@@ -450,6 +446,7 @@ const PhilosophySection = ({
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const currentParticleCount = shouldDisableAnimations ? Math.floor(particleCount / 2) : particleCount;
 
   return (
     <>
@@ -504,11 +501,13 @@ const PhilosophySection = ({
       pointer-events: none;
       transition: opacity 0.3s ease;
       z-index: 1;
+      opacity: 0;
     }
-    .card--border-glow:hover::after {
+    .card.is-active::after {
       opacity: 1;
     }
-    .card--border-glow:hover {
+    .card.is-active,
+    .card:hover {
       box-shadow: 0 4px 20px rgba(46, 24, 78, 0.4), 0 0 30px rgba(${glowColor}, 0.2);
     }
     .particle::before {
@@ -522,9 +521,6 @@ const PhilosophySection = ({
       border-radius: 50%;
       z-index: -1;
     }
-    .particle-container:hover {
-      box-shadow: 0 4px 20px rgba(46, 24, 78, 0.2), 0 0 30px rgba(${glowColor}, 0.2);
-    }
     @media (max-width: 767px) {
       .card-responsive {
         grid-template-columns: 1fr;
@@ -535,7 +531,6 @@ const PhilosophySection = ({
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}
-          disableAnimations={shouldDisableAnimations}
           enabled={enableSpotlight}
           spotlightRadius={spotlightRadius}
           glowColor={glowColor}
@@ -544,9 +539,8 @@ const PhilosophySection = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative p-8 rounded-2xl border border-solid font-light transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
-              enableBorderGlow ? 'card--border-glow' : ''
-            }`;
+            const baseClassName = `card flex flex-col justify-between relative p-8 rounded-2xl border border-solid font-light transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${enableBorderGlow ? 'card--border-glow' : ''
+              }`;
             const cardStyle = {
               backgroundColor: card.color || 'var(--background-dark)',
               borderColor: 'var(--border-color)',
@@ -580,8 +574,8 @@ const PhilosophySection = ({
                   key={index}
                   className={baseClassName}
                   style={cardStyle}
-                  disableAnimations={shouldDisableAnimations} 
-                  particleCount={particleCount}
+                  disableAnimations={shouldDisableAnimations}
+                  particleCount={currentParticleCount}
                   glowColor={glowColor}
                   enableTilt={enableTilt}
                   clickEffect={clickEffect}

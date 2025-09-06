@@ -47,18 +47,18 @@ function App() {
       </Col>
       <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
       <Col>
-      <PhilosophySection
-        textAutoHide={true}
-        enableStars={true}
-        enableSpotlight={true}
-        enableBorderGlow={true}
-        enableTilt={false} 
-        enableMagnetism={false} 
-        clickEffect={true}
-        spotlightRadius={400}
-        particleCount={20}
-        glowColor="251, 146, 60"
-      />
+        <PhilosophySection
+          textAutoHide={true}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={false}
+          enableMagnetism={false}
+          clickEffect={true}
+          spotlightRadius={500}
+          particleCount={20}
+          glowColor="251, 146, 60"
+        />
       </Col>
       <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
       <HorizontalScroll />
