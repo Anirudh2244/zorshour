@@ -34,14 +34,13 @@ const AboutUsSection = () => {
 
         {/* Main Heading */}
         <motion.h2
-          className="text-3xl md:text-4xl md:text-5xl font-extrabold max-w-4xl leading-tight mb-12 md:mb-8"
+          className="text-3xl text-gray-500 md:text-4xl md:text-5xl font-extrabold max-w-4xl leading-tight mb-12 md:mb-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
           variants={textStagger}
           custom={2}
         >
-
           Guided by creativity and powered by data, we help brands find their
           <span className="text-orange-400"> True North in Growth.</span>
         </motion.h2>
