@@ -11,10 +11,10 @@ function HeroSection() {
         <Particles
           className="w-full h-full"
           particleColors={['#B7410E', '#e5e7eb']}
-          particleCount={200}
+          particleCount={1000}
           particleSpread={10}
-          speed={0.1}
-          particleBaseSize={200}
+          speed={0.05}
+          particleBaseSize={120}
           moveParticlesOnHover={true}
           alphaParticles={true}
           disableRotation={false}
