@@ -16,7 +16,7 @@ const QueryFormSection = () => {
           {/* Left Side - Icon */}
           <div className="md:w-[30%] w-full bg-black/60 flex justify-center items-center p-8">
             <div className="relative w-56 h-56 flex justify-center items-center">
-              <div className="absolute w-full h-full rounded-full bg-gradient-to-tr from-orange-400/15 to-white/5 animate-pulse"></div>
+              <div className="absolute w-full h-full rounded-full bg-gradient-to-tr from-orange-400/30 to-white/5 animate-pulse"></div>
               <Rocket className="w-32 h-32 text-orange-400/80 animate-bounce-slow" />
             </div>
           </div>
