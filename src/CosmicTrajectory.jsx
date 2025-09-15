@@ -26,7 +26,7 @@ const dividerVariants = {
   },
 };
 
-const HowWeDoIt = () => {
+const CosmicTrajectory = () => {
   const sections = [
     {
       keyword: "MAP",

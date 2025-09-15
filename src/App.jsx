@@ -11,7 +11,7 @@ import HeroSection from "./HeroSection"
 import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
-import HowWeDoIt from "./CosmicTrajectory";
+import CosmicTrajectory from "./CosmicTrajectory";
 import CircularText from "./CircularText";
 
 
@@ -53,7 +53,7 @@ function App() {
           ariaLabel="Technology partners"
         />
       </Col>
-    
+
       <Col>
         <PhilosophySection
           textAutoHide={true}
@@ -69,10 +69,10 @@ function App() {
         />
       </Col>
 
-      
+
       <HorizontalScroll />
 
-      <HowWeDoIt />
+      <CosmicTrajectory />
       <QueryForm />
 
       <Footer />
