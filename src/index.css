@@ -325,4 +325,13 @@
 
 /* philosophy section style */
 
-
+@keyframes gradient-rise {
+  0% {
+    background-position: 50% 100%; 
+    transform: scale(0.8);
+  }
+  100% {
+    background-position: 50% 0%; 
+    transform: scale(1.2);
+  }
+}

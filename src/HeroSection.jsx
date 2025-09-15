@@ -22,7 +22,7 @@ function HeroSection() {
       </div>
       <Col className="relative z-10 w-full h-full justify-center items-center text-center px-4">
         <div className="max-w-4xl mx-auto pointer-events-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-white drop-shadow-md">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-white/90 drop-shadow-md">
             Your{' '}
             <span
               className="font-extrabold relative inline-block bg-gradient-to-r from-neutral-200 via-white to-neutral-200 bg-clip-text text-transparent tracking-wide animate-north-star-shimmer"

@@ -26,10 +26,10 @@ function App() {
     <div className="bg-black text-white font-inter">
       <Navbar />
       <HeroSection />
-      <AboutUsSection />
-      {/* <Col>
+      {/* <AboutUsSection /> */}
+      <Col>
         <AboutUs />
-      </Col> */}
+      </Col>
       <Col center={true} className={""}>
         {/* <p>Trusted By:</p> */}
         <LogoLoop
