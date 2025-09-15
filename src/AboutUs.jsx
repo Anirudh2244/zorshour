@@ -3,7 +3,7 @@ import Counter from "./Counter"; // Import the new component
 import ShimmerBorder from './ShimmerBorder'; // Import ShimmerBorder
 
 export default function AboutUs() {
-  const darkBg = "#111111";
+  const darkBg = "#080808";
 
   return (
     <section
