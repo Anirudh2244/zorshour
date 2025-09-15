@@ -388,7 +388,7 @@ const GlobalSpotlight = ({
 
 const BentoCardGrid = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 p-3 w-[100%] select-none relative"
+    className="bento-section grid gap-2 w-[100%] select-none relative"
     style={{ fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)' }}
     ref={gridRef}
   >
@@ -471,7 +471,7 @@ const PhilosophySection = ({
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
-      padding: 0.5rem;
+      padding: 3rem;
     }
     .card-responsive .card {
       grid-column: span 1;
@@ -524,6 +524,7 @@ const PhilosophySection = ({
     @media (max-width: 767px) {
       .card-responsive {
         grid-template-columns: 1fr;
+        padding: 1.5rem;
       }
     }
   `}
