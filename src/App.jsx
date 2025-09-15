@@ -16,9 +16,14 @@ import HowWeDoIt from "./HowWeDoIt";
 
 
 const imageLogos = [
-  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_4sh9s64sh9s64sh9-removebg-preview.png?updatedAt=1756211420775", alt: "Company 1", href: "https://company1.com" },
-  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_h9dhtoh9dhtoh9dh-removebg-preview.png?updatedAt=1756211420711", alt: "Company 2", href: "https://company2.com" },
-  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/logo_Generated_Image_w52cx4w52cx4w52c-removebg-preview.png?updatedAt=1756211420588", alt: "Company 3", href: "https://company3.com" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/eureka.png?updatedAt=1757933147240", alt: "Company 2", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/foxtale.png?updatedAt=1757933147149", alt: "Company 3", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/genetic-nutritions.png?updatedAt=1757933147120", alt: "Company 2", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/tac.png?updatedAt=1757933147038", alt: "Company 3", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/good-bug.png?updatedAt=1757933147044", alt: "iLife", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/my-muse.png?updatedAt=1757933146957", alt: "My Muse", href: "" },
+  { src: "https://ik.imagekit.io/adsrc2244/Zorshour/ilife.png?updatedAt=1757933146720", alt: "Genetic Nutritions", href: "" },
+
 ];
 
 function App() {
@@ -30,13 +35,13 @@ function App() {
       <Col>
         <AboutUs />
       </Col>
-      <Col center={true} className={""}>
+      <Col center={true} className={"py-12 "}>
         {/* <p>Trusted By:</p> */}
         <LogoLoop
           logos={imageLogos}
           speed={50}
           direction="left"
-          logoHeight={75}
+          logoHeight={40}
           gap={40}
           pauseOnHover
           scaleOnHover

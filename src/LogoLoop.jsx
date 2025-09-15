@@ -228,7 +228,7 @@ export const LogoLoop = memo(
               "inline-flex items-center",
               "motion-reduce:transition-none",
               scaleOnHover &&
-              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
+                "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
             )}
             aria-hidden={!!item.href && !item.ariaLabel}
           >
@@ -236,25 +236,25 @@ export const LogoLoop = memo(
           </span>
         ) : (
           <img
-            className={cx(
-              "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
-              "[-webkit-user-drag:none] pointer-events-none",
-              "[image-rendering:-webkit-optimize-contrast]",
-              "motion-reduce:transition-none",
-              scaleOnHover &&
+          className={cx(
+            "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
+            "[-webkit-user-drag:none] pointer-events-none",
+            "[image-rendering:-webkit-optimize-contrast]",
+            "motion-reduce:transition-none",
+            "filter invert-[100%] brightness-[50%] contrast-[100%]", 
+            scaleOnHover &&
               "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
-            )}
-            src={item.src}
-            srcSet={item.srcSet}
-            sizes={item.sizes}
-            width={item.width}
-            height={item.height}
-            alt={item.alt ?? ""}
-            title={item.title}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
+          )}
+          src={item.src}
+          srcSet={item.srcSet}
+          sizes={item.sizes}
+          height={logoHeight}
+          alt={item.alt ?? ""}
+          title={item.title}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+        />
         );
 
         const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title;
@@ -291,7 +291,7 @@ export const LogoLoop = memo(
           </li>
         );
       },
-      [scaleOnHover]
+      [scaleOnHover, logoHeight]
     );
 
     const logoLists = useMemo(
@@ -313,7 +313,7 @@ export const LogoLoop = memo(
     const containerStyle = useMemo(
       () => ({
         width: toCssLength(width) ?? "100%",
-        backgroundColor: "#000000", 
+        backgroundColor: "#000000",
         ...cssVariables,
         ...style,
       }),

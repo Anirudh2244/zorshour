@@ -14,8 +14,8 @@ export default function AboutUs() {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute inset-0 border border-white/10 rounded-2xl"
-          animate={{ opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          // animate={{ opacity: [0.3, 0.6, 0.3] }}
+          // transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
