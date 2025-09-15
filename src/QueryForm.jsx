@@ -4,7 +4,7 @@ import { Rocket } from "lucide-react";
 
 const QueryFormSection = () => {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-black to-neutral-900 text-white">
+    <section id="query" className="relative py-20 bg-gradient-to-b from-black to-neutral-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="flex flex-col md:flex-row items-center border border-neutral-700 rounded-3xl overflow-hidden shadow-lg"

@@ -449,7 +449,7 @@ const PhilosophySection = ({
   const currentParticleCount = shouldDisableAnimations ? Math.floor(particleCount / 2) : particleCount;
 
   return (
-    <>
+    <section id="philosophy">
       <style>
         {`
     .bento-section {
@@ -529,6 +529,7 @@ const PhilosophySection = ({
     }
   `}
       </style>
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-12 pb-8 mt-8 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}
@@ -598,7 +599,7 @@ const PhilosophySection = ({
           })}
         </div>
       </BentoCardGrid>
-    </>
+    </section>
   );
 };
 export default PhilosophySection;

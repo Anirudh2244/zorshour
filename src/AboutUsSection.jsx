@@ -16,7 +16,7 @@ const AboutUsSection = () => {
     "https://images.unsplash.com/photo-1756370473190-4c41ddbd5e59?q=80&w=392&auto=format&fit=crop&ixlib=rb-4.1.0";
 
   return (
-    <section className="relative pt-12 bg-black text-white overflow-hidden">
+    <section id="hero" className="relative pt-12 bg-black text-white overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 max-w-7xl">
         {/* "About Us" Shimmer Tag */}
         <motion.div

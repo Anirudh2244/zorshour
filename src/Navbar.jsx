@@ -1,20 +1,47 @@
 import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 
+const easeInOutCubic = (t) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const smoothScrollTo = (targetY, duration = 1000) => {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  let startTime;
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const time = timestamp - startTime;
+    const progress = Math.min(time / duration, 1);
+    const ease = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + diff * ease);
+
+    if (time < duration) {
+      requestAnimationFrame(step);
+    }
+  };
+
+  requestAnimationFrame(step);
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const lastScrollY = useRef(0);
 
-  // Detect scroll direction
+  // Detect manual scroll direction
   useEffect(() => {
     const handleScroll = () => {
+      if (isAutoScrolling) return; // Ignore auto scroll events
+
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
         setShowNavbar(false); // scrolling down → hide
-      } else {
-        setShowNavbar(true); // scrolling up → show
+      } else if (currentScrollY < lastScrollY.current) {
+        setShowNavbar(true); // scrolling up manually → show
       }
 
       lastScrollY.current = currentScrollY;
@@ -22,7 +49,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isAutoScrolling]);
 
   // Navbar slide animation
   const navSpring = useSpring({
@@ -31,9 +58,12 @@ export default function Navbar() {
   });
 
   const links = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Services", href: "#" },
+    { name: "Home", href: "hero" },
+    { name: "About Us", href: "aboutus" },
+    { name: "Our Philosophy", href: "philosophy" },
+    { name: "Our Services", href: "services" },
+    { name: "Our Cosmic Trajectory", href: "trajectory" },
+    { name: "Tell us", href: "query" }
   ];
 
   const allMenuItems = [
@@ -46,30 +76,48 @@ export default function Navbar() {
     },
   ];
 
+  // Trail for staggered menu items
   const trail = useTrail(allMenuItems.length, {
-    from: { opacity: 0, transform: "translateY(-20px)" },
+    from: { opacity: 0, transform: "translateY(-10px)" },
     opacity: isOpen ? 1 : 0,
-    transform: isOpen ? "translateY(0px)" : "translateY(-20px)",
-    config: { tension: 250, friction: 30 },
+    transform: isOpen ? "translateY(0px)" : "translateY(-10px)",
+    config: { tension: 220, friction: 28 },
+    delay: isOpen ? 100 : 0,
   });
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      setIsAutoScrolling(true);
+      setShowNavbar(false);
+      setIsOpen(false);
+
+      const targetY = el.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 1000);
+
+      // release lock after duration
+      setTimeout(() => {
+        setIsAutoScrolling(false);
+      }, 1000);
+    }
+  };
+
+  // Dropdown animation
   const menuSpring = useSpring({
-    height: isOpen ? "auto" : 0,
     opacity: isOpen ? 1 : 0,
-    overflow: "hidden",
-    config: { tension: 250, friction: 30 },
-    delay: isOpen ? 0 : 250,
+    transform: isOpen ? "scaleY(1)" : "scaleY(0)",
+    transformOrigin: "top",
+    config: { tension: 220, friction: 28 },
   });
 
   return (
     <animated.nav
       style={{
         ...navSpring,
-        boxShadow: "inset 0 0 10px rgba(251,146,60,0.25)", 
+        boxShadow: "inset 0 0 15px rgba(251,146,60,0.50)", // glow
       }}
       className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50
-                 bg-stone-950/40 backdrop-blur-sm 
-                 rounded-2xl" 
+                 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
@@ -109,7 +157,7 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       <animated.div
         style={menuSpring}
-        className="absolute text-right bg-stone-950/90 backdrop-blur-sm top-20 left-0 w-full bg-gray-950 rounded-b-2xl shadow-lg"
+        className="absolute top-20 left-0 w-full bg-stone-950/90 backdrop-blur-sm rounded-b-2xl shadow-lg origin-top"
       >
         <div className="px-4 pb-4 space-y-0">
           {trail.map((style, index) => {
@@ -117,17 +165,17 @@ export default function Navbar() {
 
             if (item.type === "link") {
               return (
-                <animated.a
+                <animated.button
                   key={item.name}
-                  href={item.href}
                   style={style}
-                  className="block text-white text-xl font-medium hover:text-orange-400 transition-colors duration-300 py-2 border-b border-neutral-800"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => scrollToSection(item.href)}
+                  className="block w-full text-right text-white text-xl font-medium hover:text-orange-400 transition-colors duration-300 py-2 border-b border-neutral-800"
                 >
                   {item.name}
-                </animated.a>
+                </animated.button>
               );
             }
+
             if (item.type === "button") {
               return (
                 <animated.a

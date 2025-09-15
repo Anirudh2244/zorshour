@@ -55,7 +55,7 @@ const HowWeDoIt = () => {
   ];
 
   return (
-    <section className="relative py-20 px-6 md:px-12 bg-black text-white">
+    <section id="trajectory" className="relative py-20 px-6 md:px-12 bg-black text-white">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12"
@@ -123,4 +123,4 @@ const HowWeDoIt = () => {
   );
 };
 
-export default HowWeDoIt;
+export default CosmicTrajectory;

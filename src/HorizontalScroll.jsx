@@ -313,5 +313,10 @@ const DesktopScroll = () => {
 
 export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  return isMobile ? <MobileCarousel /> : <DesktopScroll />;
+  return (
+    <section id="services">
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
+      {isMobile ? <MobileCarousel /> : <DesktopScroll />}
+    </section>
+  );
 }

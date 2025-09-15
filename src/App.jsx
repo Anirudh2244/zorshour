@@ -11,7 +11,7 @@ import HeroSection from "./HeroSection"
 import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
-import HowWeDoIt from "./HowWeDoIt";
+import HowWeDoIt from "./CosmicTrajectory";
 import CircularText from "./CircularText";
 
 
@@ -37,6 +37,7 @@ function App() {
         <AboutUs />
       </Col>
 
+
       <Col center={true} className={"py-12 border-b border-white/10"}>
         {/* <p>Trusted By:</p> */}
         <LogoLoop
@@ -52,7 +53,7 @@ function App() {
           ariaLabel="Technology partners"
         />
       </Col>
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-12 pb-8 mt-8 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
+    
       <Col>
         <PhilosophySection
           textAutoHide={true}
@@ -68,7 +69,7 @@ function App() {
         />
       </Col>
 
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
+      
       <HorizontalScroll />
 
       <HowWeDoIt />

@@ -6,7 +6,7 @@ export default function AboutUs() {
   const darkBg = "#080808";
 
   return (
-    <section
+    <section id="aboutus"
       className="relative w-full text-white py-20
        px-6 md:px-12 overflow-hidden"
       style={{ backgroundColor: darkBg }}
