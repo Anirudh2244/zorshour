@@ -35,7 +35,7 @@ function App() {
       <Col>
         <AboutUs />
       </Col>
-      <Col center={true} className={"py-12 "}>
+      <Col center={true} className={"py-12 border-b border-white/10"}>
         {/* <p>Trusted By:</p> */}
         <LogoLoop
           logos={imageLogos}
