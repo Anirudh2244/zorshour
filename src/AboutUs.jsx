@@ -7,7 +7,7 @@ export default function AboutUs() {
 
   return (
     <section
-      className="relative w-full text-white py-16 px-6 md:px-12 overflow-hidden"
+      className="relative w-full text-white py-20 px-6 md:px-12 overflow-hidden"
       style={{ backgroundColor: darkBg }}
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -35,7 +35,7 @@ export default function AboutUs() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.4 }}
-          className="rounded-2xl flex flex-col justify-center p-6 md:p-8"
+          className="rounded-2xl flex flex-col justify-center w-full md:w-auto p-0 md:px-8"
           style={{ backgroundColor: darkBg }}
         >
           <p className="self-start mb-2 text-xl text-white/50 tracking-wide font-medium">
