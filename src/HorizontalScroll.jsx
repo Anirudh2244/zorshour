@@ -23,22 +23,22 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
     content: (
       <>
-        <p className="text-neutral-300 text-base md:text-lg leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In the vast eCommerce galaxy, we help brands launch, grow, and scale
           to the top. Our focus is on visibility, trust, and customer experience
           — ensuring that every click moves you closer to sustainable growth.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-base md:text-lg leading-relaxed">
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
-            <FaRocket className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaRocket className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Rank higher and boost product visibility</span>
           </li>
           <li className="flex items-start">
-            <FaStar className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaStar className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Build trust and turn clicks into loyalty</span>
           </li>
           <li className="flex items-start">
-            <FaChartLine className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaChartLine className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Propel sales with measurable growth</span>
           </li>
         </ul>
@@ -52,23 +52,23 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
     content: (
       <>
-        <p className="text-neutral-300 text-base md:text-lg leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In the interconnected eCommerce galaxy, affiliate marketing helps brands
           reach wider audiences and unlock scalable growth. By building trusted
           partnerships and optimizing performance, we ensure your brand connects
           further and converts faster.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-base md:text-lg leading-relaxed">
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
-            <FaUsers className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaUsers className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Expand reach with affiliates & influencers</span>
           </li>
           <li className="flex items-start">
-            <FaLink className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaLink className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Track, manage, and optimize campaigns</span>
           </li>
           <li className="flex items-start">
-            <FaChartBar className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaChartBar className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Drive scalable growth with partnerships</span>
           </li>
         </ul>
@@ -82,23 +82,23 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
     content: (
       <>
-        <p className="text-neutral-300 text-base md:text-lg leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In today’s eCommerce galaxy, influencer marketing bridges the gap
           between brands and customers. By collaborating with trusted voices,
           we build authentic connections that drive awareness, engagement,
           and conversions.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-base md:text-lg leading-relaxed">
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
-            <FaBullhorn className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaBullhorn className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Boost awareness with authentic voices</span>
           </li>
           <li className="flex items-start">
-            <FaHandshake className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaHandshake className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Build trust through genuine collaborations</span>
           </li>
           <li className="flex items-start">
-            <FaChartLine className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-lg" />
+            <FaChartLine className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Turn influence into measurable growth</span>
           </li>
         </ul>
@@ -133,16 +133,12 @@ const MobileCarousel = () => {
     return () => clearInterval(slideTimer);
   }, []);
 
-  // Helper function to split title and color the first word
   const renderTitleWithOrangeFirstWord = (title) => {
     const words = title.split(" ");
-    if (words.length === 0) return title;
     return (
       <>
-        <span className="text-orange-400">{words[0]}</span>
-        {words.slice(1).map((word, index) => (
-          <span key={index}> {word}</span>
-        ))}
+        <span className="text-orange-400">{words[0]}</span>{" "}
+        {words.slice(1).join(" ")}
       </>
     );
   };
@@ -152,18 +148,18 @@ const MobileCarousel = () => {
       <AnimatePresence mode="wait">
         <motion.section
           key={currentSlide}
-          className="flex flex-col flex-grow" // Use flex-grow to allow content to fill available space
+          className="flex flex-col flex-grow"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {/* Top Section */}
-          <div className="w-full flex-shrink-0 flex items-center justify-center p-6 text-white bg-black shadow-lg">
+          <div className="w-full flex-shrink-0 flex items-center justify-center py-12 px-6 md:px-12 bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
-              className="w-full h-auto max-h-[40vh] object-contain shadow-lg rounded-xl"
+              className="w-full h-auto max-h-[40vh] object-contain shadow-lg rounded-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -171,15 +167,15 @@ const MobileCarousel = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="w-full flex-grow flex items-center justify-center p-6 text-white bg-gradient-to-br from-black to-neutral-900 shadow-lg">
+          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 bg-gradient-to-br from-black to-neutral-900 shadow-lg">
             <motion.div
-              className="text-center max-w-xl p-4"
+              className="text-center max-w-xl"
               initial="hidden"
               animate="visible"
               variants={textStagger}
             >
               <motion.h1
-                className="text-2xl font-bold mb-4"
+                className="text-3xl md:text-4xl font-extrabold mb-6"
                 variants={textStagger}
                 custom={1}
               >
@@ -237,16 +233,12 @@ const DesktopScroll = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Helper function to split title and color the first word
   const renderTitleWithOrangeFirstWord = (title) => {
     const words = title.split(" ");
-    if (words.length === 0) return title;
     return (
       <>
-        <span className="text-orange-400">{words[0]}</span>
-        {words.slice(1).map((word, index) => (
-          <span key={index}> {word}</span>
-        ))}
+        <span className="text-orange-400">{words[0]}</span>{" "}
+        {words.slice(1).join(" ")}
       </>
     );
   };
@@ -269,7 +261,7 @@ const DesktopScroll = () => {
             >
               {/* Left Section */}
               <motion.div
-                className="w-1/2 flex flex-col items-center justify-center p-10 lg:p-16 text-white bg-black"
+                className="w-1/2 flex flex-col items-center justify-center py-20 px-6 md:px-12 bg-black"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
@@ -278,7 +270,7 @@ const DesktopScroll = () => {
                 <motion.img
                   src={service.contentImage}
                   alt={service.title}
-                  className="h-[55vh] lg:h-[65vh] object-contain shadow-lg rounded-xl"
+                  className="h-[55vh] lg:h-[65vh] object-contain shadow-lg rounded-2xl"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1.05 }}
                   viewport={{ once: true, amount: 0.5 }}
@@ -288,7 +280,7 @@ const DesktopScroll = () => {
 
               {/* Right Section */}
               <motion.div
-                className="w-1/2 flex items-center justify-center p-10 lg:p-16 text-white bg-gradient-to-br from-black to-neutral-900"
+                className="w-1/2 flex items-center justify-center py-20 px-6 md:px-12 bg-gradient-to-br from-black to-neutral-900"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
@@ -296,14 +288,14 @@ const DesktopScroll = () => {
               >
                 <div className="max-w-xl text-center md:text-left">
                   <motion.h1
-                    className="text-3xl lg:text-4xl font-extrabold mb-6"
+                    className="text-3xl md:text-4xl font-extrabold mb-6"
                     variants={textStagger}
                     custom={1}
                   >
                     {renderTitleWithOrangeFirstWord(service.title)}
                   </motion.h1>
                   <motion.div
-                    className="text-base leading-relaxed text-neutral-300 text-lg"
+                    className="text-lg md:text-xl leading-relaxed text-neutral-300"
                     variants={textStagger}
                     custom={2}
                   >

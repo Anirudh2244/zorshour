@@ -28,13 +28,13 @@ const AboutUsSection = () => {
           custom={1}
         >
           <ShimmerBorder shimmerStyle="container" className="px-6 py-2 rounded-full">
-            <span className="text text-sm font-semibold">About Us</span>
+            <span className="text-sm font-semibold">About Us</span>
           </ShimmerBorder>
         </motion.div>
 
         {/* Main Heading */}
         <motion.h2
-          className="text-3xl text-gray-500 md:text-4xl md:text-5xl font-extrabold max-w-4xl leading-tight mb-12 md:mb-8"
+          className="text-3xl text-gray-500 md:text-4xl font-extrabold max-w-4xl leading-tight mb-12 md:mb-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
@@ -48,7 +48,7 @@ const AboutUsSection = () => {
         <div className="flex flex-col md:flex-row items-center md:items-end gap-4">
           {/* Left Image Section */}
           <motion.div
-            className="w-full md:w-1/2 flex justify-start items-center h-[100px] md:min-h-[300px] relative pb-10 md:pb-100"
+            className="w-full md:w-1/2 flex justify-start items-center h-[100px] md:min-h-[300px] relative pb-10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1.05 }}
             viewport={{ once: true, amount: 0.5 }}
