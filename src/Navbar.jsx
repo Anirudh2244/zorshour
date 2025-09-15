@@ -1,8 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from '@react-spring/web';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
+
+  // Detect scroll direction and hide/show navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+        // Scrolling down
+        setShowNavbar(false);
+      } else {
+        // Scrolling up
+        setShowNavbar(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Slide animation for navbar
+  const navSpring = useSpring({
+    transform: showNavbar ? "translateY(0%)" : "translateY(-150%)",
+    config: {
+      tension: 150,
+      friction: 50,
+    },
+  });
 
   const links = [
     { name: "Home", href: "#" },
@@ -36,9 +67,19 @@ export default function Navbar() {
   });
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+    <animated.nav
+      style={{
+        ...navSpring,
+        boxShadow: 'inset 0 0 20px rgba(251, 146, 60, 0.2)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+      }}
+      className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl 
+                 z-50 bg-gray-950/50 border border-gray-800/50 
+                 rounded-full"
+    >
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <img
@@ -60,8 +101,9 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
-                }`}
+              className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${
+                isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
+              }`}
               aria-label="Toggle mobile menu"
             >
               {isOpen ? "✕" : "☰"}
@@ -69,41 +111,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Mobile Dropdown */}
-      <animated.div
-        style={menuSpring}
-        className="absolute top-20 left-0 w-full bg-gray-950"
-      >
-        <div className="px-4 pb-4 space-y-4">
-          {trail.map((style, index) => {
-            const item = allMenuItems[index];
-            return item.type === 'link' ? (
-              <animated.a
-                key={item.name}
-                href={item.href}
-                style={style}
-                className="block text-white text-xl font-medium hover:text-[#B7410E] transition-colors duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </animated.a>
-            ) : (
-              <animated.a
-                key={item.name}
-                href={item.href}
-                target={item.target || "_self"}
-                rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-                style={style}
-                className="block text-center mt-4 bg-white hover:bg-orange-400 hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </animated.a>
-            );
-          })}
-        </div>
-      </animated.div>
-    </nav>
+    </animated.nav>
   );
 }

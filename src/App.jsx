@@ -12,6 +12,7 @@ import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
 import HowWeDoIt from "./HowWeDoIt";
+import CircularText from "./CircularText";
 
 
 
@@ -35,6 +36,7 @@ function App() {
       <Col>
         <AboutUs />
       </Col>
+
       <Col center={true} className={"py-12 border-b border-white/10"}>
         {/* <p>Trusted By:</p> */}
         <LogoLoop

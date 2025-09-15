@@ -7,7 +7,8 @@ export default function AboutUs() {
 
   return (
     <section
-      className="relative w-full text-white py-20 px-6 md:px-12 overflow-hidden"
+      className="relative w-full text-white py-20
+       px-6 md:px-12 overflow-hidden"
       style={{ backgroundColor: darkBg }}
     >
       <div className="absolute inset-0 pointer-events-none">
