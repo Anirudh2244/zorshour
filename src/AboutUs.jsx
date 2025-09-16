@@ -1,14 +1,46 @@
+"use client";
 import { motion } from "framer-motion";
 import Counter from "./Counter";
-import ShimmerBorder from './ShimmerBorder';
+
+const easeInOutCubic = (t) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const smoothScrollTo = (targetY, duration = 1000) => {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  let startTime;
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const time = timestamp - startTime;
+    const progress = Math.min(time / duration, 1);
+    const ease = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + diff * ease);
+
+    if (time < duration) {
+      requestAnimationFrame(step);
+    }
+  };
+
+  requestAnimationFrame(step);
+};
 
 export default function AboutUs() {
   const darkBg = "#080808";
 
+  // to handle the button click and scroll
+  const handleScrollToPhilosophy = () => {
+    const el = document.getElementById("philosophy");
+    if (el) {
+      const targetY = el.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 1000);
+    }
+  };
+
   return (
     <section id="aboutus"
-      className="relative w-full text-white py-20
-       px-6 md:px-12 overflow-hidden"
+      className="relative w-full text-white py-20 px-6 md:px-12 overflow-hidden"
       style={{ backgroundColor: darkBg }}
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -30,7 +62,6 @@ export default function AboutUs() {
         </div>
 
         {/* Right: Content */}
-
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -42,24 +73,20 @@ export default function AboutUs() {
           <p className="self-start mb-2 text-xl text-white/50 tracking-wide font-medium">
             About Us
           </p>
-
           <h3 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-400 bg-clip-text text-transparent leading-tight">
             Illuminating Brands with Precision
           </h3>
-
           <p className="text-lg mb-6 leading-relaxed text-white/70 font-light">
-            At <span className="font-semibold text-white">ZorShour</span>, we believe marketing should do more than just look good - <span className="font-semibold text-orange-400">it should work.</span> <br />
+            At <span className="font-semibold text-white">ZorShour</span>, we believe marketing should do more than just look good - <span className="font-semibold text-orange-400">it should work.</span>
+            <br />
             By blending creativity with strategy, we combine <span className="font-medium text-white">data-driven precision</span> with <span className="font-medium text-white">compelling storytelling</span> to amplify your visibility and connect with the right audience. We transform bold ideas into measurable growth, ensuring every campaign shines as brightly as your ambition.
           </p>
-
-          <a
-            href="https://wa.me/919829707705?text=Hello%20ZorShour%20team..."
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={handleScrollToPhilosophy}
             className="self-start bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
           >
             Learn More
-          </a>
+          </button>
         </motion.div>
       </div>
 
@@ -71,3 +98,4 @@ export default function AboutUs() {
     </section>
   );
 }
+
