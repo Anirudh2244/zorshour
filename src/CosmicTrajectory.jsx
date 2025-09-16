@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Map, Compass, Rocket, Orbit } from "lucide-react";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -29,25 +30,25 @@ const dividerVariants = {
 const CosmicTrajectory = () => {
   const sections = [
     {
-      keyword: "MAP",
+      icon: Map,
       title: "MAPPING YOUR UNIVERSE",
       description:
         "We dive deep into your brand, audience, and market to uncover what makes you unique. This phase is about understanding your business from every angle - your challenges, ambitions, and place in the digital landscape.",
     },
     {
-      keyword: "CHART",
+      icon: Compass,
       title: "THE STELLAR BLUEPRINT",
       description:
         "Using insights from discovery, we craft a customized, data-driven plan. This is your blueprint for navigating the digital universe, ensuring every step is purposeful and aligned with your goals.",
     },
     {
-      keyword: "LAUNCH",
+      icon: Rocket,
       title: "IGNITION & ASCENT",
       description:
         "This is the hands-on phase where creativity meets data. We meticulously implement your campaigns and optimize your digital assets with unwavering attention to detail and efficiency.",
     },
     {
-      keyword: "ORBIT",
+      icon: Orbit,
       title: "SUSTAINING MOMENTUM",
       description:
         "Our work doesn't stop after launch. We continuously monitor performance and refine our approach based on real-time data to ensure your brand achieves sustained success.",
@@ -55,7 +56,10 @@ const CosmicTrajectory = () => {
   ];
 
   return (
-    <section id="trajectory" className="relative py-20 px-6 md:px-12 bg-black text-white">
+    <section
+      id="trajectory"
+      className="relative py-20 px-6 md:px-12 bg-black text-white"
+    >
       <div className="max-w-6xl mx-auto">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12"
@@ -73,18 +77,16 @@ const CosmicTrajectory = () => {
               key={i}
               className="flex flex-col md:flex-row items-center md:items-start gap-8"
             >
-              {/* Left Keyword */}
+              {/* Left Icon */}
               <motion.div
-                className="w-full md:w-1/4 flex-shrink-0 text-center md:text-left"
+                className="w-full md:w-1/4 flex-shrink-0 flex justify-start md:justify-center"
                 custom={i}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
                 variants={itemVariants}
               >
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-200">
-                  {section.keyword}
-                </h3>
+                <section.icon className="w-14 h-14 md:w-16 md:h-16 text-orange-400" />
               </motion.div>
 
               {/* Right Content */}
