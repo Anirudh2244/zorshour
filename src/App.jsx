@@ -14,6 +14,7 @@ import CosmicTrajectory from "./CosmicTrajectory";
 import CircularText from "./CircularText";
 
 
+
 const imageLogos = [
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/eureka.png?updatedAt=1757933147240", alt: "Company 2", href: "" },
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/foxtale.png?updatedAt=1757933147149", alt: "Company 3", href: "" },
@@ -40,6 +41,7 @@ function App() {
   return (
     <div className="bg-black text-white font-inter">
       <Navbar />
+
       <div style={{ visibility: showHero ? 'visible' : 'hidden' }}>
         <HeroSection />
       </div>

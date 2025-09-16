@@ -172,7 +172,7 @@ const MobileCarousel = () => {
               className="absolute inset-0 z-0"
               style={{
                 background:
-                  "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 75%)",
+                  "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)",
               }}
             />
 
@@ -299,7 +299,7 @@ const DesktopScroll = () => {
                 <div
                   className="absolute inset-0 z-0"
                   style={{
-                    background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 75%)",
+                    background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50/%)",
                   }}
                 />
 
