@@ -1,3 +1,5 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Row from "./Row"
 import Col from "./Col"
 import Navbar from "./Navbar"
@@ -5,15 +7,11 @@ import Footer from "./Footer"
 import LogoLoop from './LogoLoop';
 import AboutUs from "./AboutUs"
 import HorizontalScroll from "./HorizontalScroll"
-import { appendErrors } from "react-hook-form"
-import AboutUsSection from "./AboutUsSection"
 import HeroSection from "./HeroSection"
-import ShimmerBorder from "./ShimmerBorder";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
 import CosmicTrajectory from "./CosmicTrajectory";
 import CircularText from "./CircularText";
-
 
 
 const imageLogos = [
@@ -28,18 +26,29 @@ const imageLogos = [
 ];
 
 function App() {
+  const [showHero, setShowHero] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowHero(window.scrollY < window.innerHeight * 0.8);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-black text-white font-inter">
       <Navbar />
-      <HeroSection />
-      {/* <AboutUsSection /> */}
+      <div style={{ visibility: showHero ? 'visible' : 'hidden' }}>
+        <HeroSection />
+      </div>
+
       <Col>
         <AboutUs />
       </Col>
 
-
       <Col center={true} className={"py-12 border-b border-white/10"}>
-        {/* <p>Trusted By:</p> */}
         <LogoLoop
           logos={imageLogos}
           speed={50}
@@ -69,14 +78,15 @@ function App() {
         />
       </Col>
 
-
       <HorizontalScroll />
 
       <CosmicTrajectory />
+
       <QueryForm />
 
       <Footer />
     </div>
   )
 }
+
 export default App

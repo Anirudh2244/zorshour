@@ -1,9 +1,50 @@
-import React from 'react'
-import Col from './Col'
-import Particles from './Particles'
-import ShimmerBorder from './ShimmerBorder'
+"use client";
+import React, { useRef, useState } from 'react';
+import Col from './Col';
+import Particles from './Particles';
+import ShimmerBorder from './ShimmerBorder';
 
-function HeroSection() {
+const easeInOutCubic = (t) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const smoothScrollTo = (targetY, duration = 1000) => {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  let startTime;
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const time = timestamp - startTime;
+    const progress = Math.min(time / duration, 1);
+    const ease = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + diff * ease);
+
+    if (time < duration) {
+      requestAnimationFrame(step);
+    }
+  };
+
+  requestAnimationFrame(step);
+};
+
+export default function HeroSection() {
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+
+  // Function to handle the scroll
+  const handleScrollToAboutUs = () => {
+    const el = document.getElementById("aboutus");
+    if (el) {
+      setIsAutoScrolling(true);
+      const targetY = el.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 1000);
+
+      setTimeout(() => {
+        setIsAutoScrolling(false);
+      }, 1000);
+    }
+  };
+
   return (
     <Col className="w-full h-[100vh] relative overflow-hidden bg-gray-950" center={true}>
       {/* Background particles */}
@@ -37,14 +78,14 @@ function HeroSection() {
           </p>
 
           <div className="mt-8">
-            <ShimmerBorder shimmerStyle="container" className="px-8 py-3 rounded-full">
-              <span className="text font-semibold text-lg">Explore Our Solutions</span>
+            <ShimmerBorder shimmerStyle="container" className="px-8 py-3 rounded-full flex justify-center items-center">
+              <button onClick={handleScrollToAboutUs} className="text font-bold text-lg">
+                Explore Our Solutions
+              </button>
             </ShimmerBorder>
           </div>
         </div>
       </Col>
     </Col>
-  )
+  );
 }
-
-export default HeroSection

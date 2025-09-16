@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Map, Compass, Rocket, Orbit } from "lucide-react";
+import { Map, Compass, Zap, Orbit } from "lucide-react";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -42,7 +42,7 @@ const CosmicTrajectory = () => {
         "Using insights from discovery, we craft a customized, data-driven plan. This is your blueprint for navigating the digital universe, ensuring every step is purposeful and aligned with your goals.",
     },
     {
-      icon: Rocket,
+      icon: Zap,
       title: "IGNITION & ASCENT",
       description:
         "This is the hands-on phase where creativity meets data. We meticulously implement your campaigns and optimize your digital assets with unwavering attention to detail and efficiency.",

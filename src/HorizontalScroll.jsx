@@ -129,7 +129,7 @@ const MobileCarousel = () => {
   };
 
   useEffect(() => {
-    const slideTimer = setInterval(nextSlide, 6000);
+    const slideTimer = setInterval(nextSlide, 10000);
     return () => clearInterval(slideTimer);
   }, []);
 
@@ -167,9 +167,18 @@ const MobileCarousel = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 bg-gradient-to-br from-black to-neutral-900 shadow-lg">
+          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background:
+                  "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 75%)",
+              }}
+            />
+
+            {/* Content */}
             <motion.div
-              className="text-center max-w-xl"
+              className="relative z-10 text-center max-w-xl"
               initial="hidden"
               animate="visible"
               variants={textStagger}
@@ -186,6 +195,7 @@ const MobileCarousel = () => {
               </motion.div>
             </motion.div>
           </div>
+
         </motion.section>
       </AnimatePresence>
 
@@ -280,13 +290,21 @@ const DesktopScroll = () => {
 
               {/* Right Section */}
               <motion.div
-                className="w-1/2 flex items-center justify-center py-20 px-6 md:px-12 bg-gradient-to-br from-black to-neutral-900"
+                className="w-1/2 flex items-center justify-center py-20 px-6 md:px-12 relative overflow-hidden bg-black"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }}
                 variants={textStagger}
               >
-                <div className="max-w-xl text-center md:text-left">
+                <div
+                  className="absolute inset-0 z-0"
+                  style={{
+                    background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 75%)",
+                  }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 max-w-xl text-center md:text-left">
                   <motion.h1
                     className="text-3xl md:text-4xl font-extrabold mb-6"
                     variants={textStagger}
@@ -303,6 +321,7 @@ const DesktopScroll = () => {
                   </motion.div>
                 </div>
               </motion.div>
+
             </section>
           ))}
         </div>
