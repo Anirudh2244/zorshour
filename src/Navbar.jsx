@@ -119,18 +119,18 @@ export default function Navbar() {
       className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50
                  bg-stone-950/40 backdrop-blur-sm rounded-2xl"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src="https://ik.imagekit.io/adsrc2244/Zorshour/Screenshot_2025-08-28_at_11.52.35_AM-removebg-preview.png?updatedAt=1756362288219"
+              src="https://ik.imagekit.io/adsrc2244/Zorshour/zorshour-logo.png?updatedAt=1758011522893"
               alt="ZorShour"
-              className="h-12 w-auto"
+              className="h-6 md:h-8 lg:-10 w-auto"
             />
           </div>
 
-          <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
+          <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-6">
             {/* Desktop Get in Touch */}
             <a
               href="https://wa.me/919829707705?text=Hello%20ZorShour%20team..."
