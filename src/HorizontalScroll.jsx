@@ -155,7 +155,7 @@ const MobileCarousel = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {/* Top Section */}
-          <div className="w-full flex-shrink-0 flex items-center justify-center py-12 px-6 md:px-12 bg-black shadow-lg">
+          <div className="w-full flex-shrink-0 flex items-center justify-center py-20 px-6 md:px-12 bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
@@ -170,10 +170,7 @@ const MobileCarousel = () => {
           <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
             <div
               className="absolute inset-0 z-0"
-              style={{
-                background:
-                  "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)",
-              }}
+              style={{ background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)" }}
             />
 
             {/* Content */}
@@ -298,9 +295,8 @@ const DesktopScroll = () => {
               >
                 <div
                   className="absolute inset-0 z-0"
-                  style={{
-                    background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50/%)",
-                  }}
+                  style={{ background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)" }}
+
                 />
 
                 {/* Content */}
@@ -334,7 +330,7 @@ export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <section id="services">
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center my-12">Our <span className="text-orange-400">Services</span></p>
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20">Our <span className="text-orange-400">Services</span></p>
       {isMobile ? <MobileCarousel /> : <DesktopScroll />}
     </section>
   );

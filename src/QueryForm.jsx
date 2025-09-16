@@ -4,7 +4,7 @@ import { Rocket } from "lucide-react";
 
 const QueryFormSection = () => {
   return (
-    <section id="query" className="relative py-20 bg-gradient-to-b from-black to-neutral-900 text-white">
+    <section id="query" className="relative pb-20 bg-gradient-to-b from-black to-neutral-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="flex flex-col md:flex-row items-center border border-neutral-700 rounded-3xl overflow-hidden shadow-lg"
@@ -22,7 +22,7 @@ const QueryFormSection = () => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="md:w-[70%] w-full bg-black/60 p-8 space-y-6">
+          <div className="md:w-[70%] w-full bg-black/60 p-4 space-y-6">
             <motion.h2
               className="text-3xl font-extrabold mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const QueryFormSection = () => {
                 type="text"
                 required
                 placeholder="Enter your name or company"
-                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-white 
+                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-600 
                            focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
               />
             </div>
@@ -55,7 +55,7 @@ const QueryFormSection = () => {
                 type="email"
                 required
                 placeholder="Enter your email address"
-                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-white 
+                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-600 
                            focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
               />
             </div>
@@ -68,7 +68,7 @@ const QueryFormSection = () => {
                 type="tel"
                 required
                 placeholder="Enter your phone number"
-                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-white 
+                className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-600
                            focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
               />
             </div>
@@ -77,9 +77,9 @@ const QueryFormSection = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-orange-400 text-black font-semibold py-3 px-6 rounded-xl
+                className="w-full bg-white text-black font-semibold py-3 px-6 rounded-xl
                            transition-all duration-500 ease-out 
-                           hover:scale-[1.02] hover:bg-orange-500 hover:shadow-[0_0_20px_rgba(251,146,60,0.25)]"
+                           hover:scale-[1.02] hover:text-white hover:bg-orange-400 hover:shadow-[0_0_20px_rgba(251,146,60,0.25)]"
               >
                 Submit Query
               </button>

@@ -50,7 +50,7 @@ function App() {
         <AboutUs />
       </Col>
 
-      <Col center={true} className={"py-12 border-b border-white/10"}>
+      <Col center={true} className={"py-10 border-b border-white/10"}>
         <LogoLoop
           logos={imageLogos}
           speed={50}

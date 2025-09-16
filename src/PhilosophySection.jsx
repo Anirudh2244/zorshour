@@ -471,7 +471,8 @@ const PhilosophySection = ({
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
-      padding: 3rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
     .card-responsive .card {
       grid-column: span 1;
@@ -524,12 +525,13 @@ const PhilosophySection = ({
     @media (max-width: 767px) {
       .card-responsive {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
       }
     }
   `}
       </style>
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-12 pb-8 mt-8 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center py-20 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
       {enableSpotlight && (
         <GlobalSpotlight
           gridRef={gridRef}
