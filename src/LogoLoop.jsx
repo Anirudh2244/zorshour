@@ -11,6 +11,7 @@ const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,
   MIN_COPIES: 2,
   COPY_HEADROOM: 2,
+  DELTA_TIME_CLAMP_MS: 33.3, 
 };
 
 const toCssLength = (value) =>
@@ -112,7 +113,8 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, isHovered, pauseOn
         lastTimestampRef.current = timestamp;
       }
 
-      const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
+      const rawDeltaTime = timestamp - lastTimestampRef.current;
+      const deltaTime = Math.min(rawDeltaTime, ANIMATION_CONFIG.DELTA_TIME_CLAMP_MS) / 1000;
       lastTimestampRef.current = timestamp;
 
       const target = pauseOnHover && isHovered ? 0 : targetVelocity;
@@ -154,7 +156,7 @@ export const LogoLoop = memo(
     gap = 32,
     pauseOnHover = true,
     fadeOut = false,
-    fadeOutColor = "#000000", // default black
+    fadeOutColor = "#000000",
     scaleOnHover = false,
     ariaLabel = "Partner logos",
     className,
@@ -236,25 +238,25 @@ export const LogoLoop = memo(
           </span>
         ) : (
           <img
-          className={cx(
-            "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
-            "[-webkit-user-drag:none] pointer-events-none",
-            "[image-rendering:-webkit-optimize-contrast]",
-            "motion-reduce:transition-none",
-            "filter invert-[100%] brightness-[50%] contrast-[100%]", 
-            scaleOnHover &&
-              "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
-          )}
-          src={item.src}
-          srcSet={item.srcSet}
-          sizes={item.sizes}
-          height={logoHeight}
-          alt={item.alt ?? ""}
-          title={item.title}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-        />
+            className={cx(
+              "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
+              "[-webkit-user-drag:none] pointer-events-none",
+              "[image-rendering:-webkit-optimize-contrast]",
+              "motion-reduce:transition-none",
+              "filter invert-[100%] brightness-[50%] contrast-[100%]",
+              scaleOnHover &&
+                "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
+            )}
+            src={item.src}
+            srcSet={item.srcSet}
+            sizes={item.sizes}
+            height={logoHeight}
+            alt={item.alt ?? ""}
+            title={item.title}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
         );
 
         const itemAriaLabel = isNodeItem ? item.ariaLabel ?? item.title : item.alt ?? item.title;
