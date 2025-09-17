@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 
+// Easing function for smooth scrolling
 const easeInOutCubic = (t) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-const smoothScrollTo = (targetY, duration = 1000) => {
+// Custom smooth scroll utility with completion callback
+const smoothScrollTo = (targetY, duration = 1000, onComplete) => {
   const startY = window.scrollY;
   const diff = targetY - startY;
   let startTime;
@@ -12,13 +14,15 @@ const smoothScrollTo = (targetY, duration = 1000) => {
   const step = (timestamp) => {
     if (!startTime) startTime = timestamp;
     const time = timestamp - startTime;
-    const progress = Math.min(time / duration, 1);
+    const progress = Math.min(time / duration, 1); 
     const ease = easeInOutCubic(progress);
 
     window.scrollTo(0, startY + diff * ease);
 
     if (time < duration) {
-      requestAnimationFrame(step);
+      requestAnimationFrame(step); 
+    } else {
+      if (onComplete) onComplete(); 
     }
   };
 
@@ -29,29 +33,31 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
-  const lastScrollY = useRef(0);
+  const lastScrollY = useRef(0); 
 
-  // Detect manual scroll direction
+  // Effect navbar visibility on scroll direction
   useEffect(() => {
     const handleScroll = () => {
-      if (isAutoScrolling) return; // Ignore auto scroll events
+      // Ignore scroll events (auto-scroll)
+      if (isAutoScrolling) return;
 
       const currentScrollY = window.scrollY;
-
+      // hide show navbar on scroll
       if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
-        setShowNavbar(false); // scrolling down → hide
-      } else if (currentScrollY < lastScrollY.current) {
-        setShowNavbar(true); // scrolling up manually → show
+        setShowNavbar(false);
+      }
+      else if (currentScrollY < lastScrollY.current) {
+        setShowNavbar(true);
       }
 
-      lastScrollY.current = currentScrollY;
+      lastScrollY.current = currentScrollY; //last scroll position
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isAutoScrolling]);
 
-  // Navbar slide animation
+  // Spring animation navbar 
   const navSpring = useSpring({
     transform: showNavbar ? "translateY(0%)" : "translateY(-120%)",
     config: { tension: 250, friction: 30 },
@@ -63,7 +69,7 @@ export default function Navbar() {
     { name: "Our Philosophy", href: "philosophy" },
     { name: "Our Services", href: "services" },
     { name: "Our Cosmic Trajectory", href: "trajectory" },
-    { name: "Tell us", href: "query" }
+    { name: "Tell us", href: "query" },
   ];
 
   const allMenuItems = [
@@ -76,7 +82,7 @@ export default function Navbar() {
     },
   ];
 
-  // Trail for staggered menu items
+  // useTrail hook for staggered animation 
   const trail = useTrail(allMenuItems.length, {
     from: { opacity: 0, transform: "translateY(-10px)" },
     opacity: isOpen ? 1 : 0,
@@ -93,16 +99,13 @@ export default function Navbar() {
       setIsOpen(false);
 
       const targetY = el.getBoundingClientRect().top + window.scrollY;
-      smoothScrollTo(targetY, 1000);
-
-      // release lock after duration
-      setTimeout(() => {
+      smoothScrollTo(targetY, 1000, () => {
         setIsAutoScrolling(false);
-      }, 1000);
+      });
     }
   };
 
-  // Dropdown animation
+  // Spring animation dropdown 
   const menuSpring = useSpring({
     opacity: isOpen ? 1 : 0,
     transform: isOpen ? "scaleY(1)" : "scaleY(0)",
@@ -114,10 +117,9 @@ export default function Navbar() {
     <animated.nav
       style={{
         ...navSpring,
-        boxShadow: "inset 0 0 15px rgba(251,146,60,0.50)", // glow
+        boxShadow: "inset 0 0 15px rgba(251,146,60,0.50)",
       }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50
-                 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
+      className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
         <div className="flex justify-between items-center h-18">
@@ -131,17 +133,25 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-6">
-            {/* Desktop Get in Touch */}
-            <a
-              href="https://wa.me/919829707705?text=Hello%20ZorShour%20team..."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:block bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
-            >
-              Get in Touch
-            </a>
+            {/* Desktop "Get in Touch" Button conditional */}
+            {allMenuItems.map(
+              (item) =>
+                item.type === "button" && (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target={item.target || "_self"}
+                    rel={
+                      item.target === "_blank" ? "noopener noreferrer" : undefined
+                    }
+                    className="hidden md:block bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
+                  >
+                    {item.name}
+                  </a>
+                )
+            )}
 
-            {/* Hamburger */}
+            {/* Hamburger Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`text-3xl md:text-4xl focus:outline-none transition-colors duration-300 ${isOpen ? "text-orange-400" : "text-white hover:text-orange-400"
@@ -154,7 +164,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Dropdown Menu */}
       <animated.div
         style={menuSpring}
         className="absolute top-20 left-0 w-full bg-stone-950/90 backdrop-blur-sm rounded-b-2xl shadow-lg origin-top"
@@ -169,7 +179,7 @@ export default function Navbar() {
                   key={item.name}
                   style={style}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-right text-white text-xl font-medium hover:text-orange-400 transition-colors duration-300 py-2 border-b border-neutral-800"
+                  className="block w-full text-right text-white text-xl font-medium hover:text-orange-400 transition-colors duration-300 py-2 border-b border-neutral-800 cursor-pointer"
                 >
                   {item.name}
                 </animated.button>
@@ -182,9 +192,11 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   target={item.target || "_self"}
-                  rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                  rel={
+                    item.target === "_blank" ? "noopener noreferrer" : undefined
+                  }
                   style={style}
-                  className="block md:hidden text-center mt-2 bg-white hover:bg-orange-400 hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full transition-colors duration-300 border-b border-neutral-800"
+                  className="block md:hidden text-center mt-2 bg-white hover:bg-orange-400 hover:text-white text-gray-950 font-semibold py-2 px-6 rounded-full transition-colors duration-300 border-b border-neutral-800 cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
