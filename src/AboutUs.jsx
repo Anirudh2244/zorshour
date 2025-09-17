@@ -29,7 +29,7 @@ const smoothScrollTo = (targetY, duration = 1000) => {
 export default function AboutUs() {
   const darkBg = "#080808";
 
-  // to handle the button click and scroll
+  // button click and smooth scroll
   const handleScrollToPhilosophy = () => {
     const el = document.getElementById("philosophy");
     if (el) {
@@ -39,14 +39,13 @@ export default function AboutUs() {
   };
 
   return (
-    <section id="aboutus"
+    <section
+      id="aboutus"
       className="relative w-full text-white py-20 px-6 md:px-12 overflow-hidden"
       style={{ backgroundColor: darkBg }}
     >
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute inset-0 border-t border-b border-white/10"
-        />
+        <motion.div className="absolute inset-0 border-t border-b border-white/10" />
       </div>
 
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
@@ -77,9 +76,18 @@ export default function AboutUs() {
             Illuminating Brands with Precision
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-white/70 font-light">
-            At <span className="font-semibold text-white">ZorShour</span>, we believe marketing should do more than just look good - <span className="font-semibold text-orange-400">it should work.</span>
+            At{" "}
+            <span className="font-semibold text-white">ZorShour</span>, we
+            believe marketing should do more than just look good -{" "}
+            <span className="font-semibold text-orange-400">it should work.</span>
             <br />
-            By blending creativity with strategy, we combine <span className="font-medium text-white">data-driven precision</span> with <span className="font-medium text-white">compelling storytelling</span> to amplify your visibility and connect with the right audience. We transform bold ideas into measurable growth, ensuring every campaign shines as brightly as your ambition.
+            By blending creativity with strategy, we combine{" "}
+            <span className="font-medium text-white">data-driven precision</span>{" "}
+            with{" "}
+            <span className="font-medium text-white">compelling storytelling</span>{" "}
+            to amplify your visibility and connect with the right audience. We
+            transform bold ideas into measurable growth, ensuring every campaign
+            shines as brightly as your ambition.
           </p>
           <button
             onClick={handleScrollToPhilosophy}
@@ -98,4 +106,3 @@ export default function AboutUs() {
     </section>
   );
 }
-
