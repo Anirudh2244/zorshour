@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 
-// Easing function for smooth scrolling
 const easeInOutCubic = (t) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-// Custom smooth scroll utility with completion callback
 const smoothScrollTo = (targetY, duration = 1000, onComplete) => {
   const startY = window.scrollY;
   const diff = targetY - startY;
@@ -14,15 +12,15 @@ const smoothScrollTo = (targetY, duration = 1000, onComplete) => {
   const step = (timestamp) => {
     if (!startTime) startTime = timestamp;
     const time = timestamp - startTime;
-    const progress = Math.min(time / duration, 1); 
+    const progress = Math.min(time / duration, 1);
     const ease = easeInOutCubic(progress);
 
     window.scrollTo(0, startY + diff * ease);
 
     if (time < duration) {
-      requestAnimationFrame(step); 
+      requestAnimationFrame(step);
     } else {
-      if (onComplete) onComplete(); 
+      if (onComplete) onComplete();
     }
   };
 
@@ -33,33 +31,27 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
-  const lastScrollY = useRef(0); 
+  const lastScrollY = useRef(0);
 
-  // Effect navbar visibility on scroll direction
   useEffect(() => {
     const handleScroll = () => {
-      // Ignore scroll events (auto-scroll)
       if (isAutoScrolling) return;
 
       const currentScrollY = window.scrollY;
-      // hide show navbar on scroll
       if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
         setShowNavbar(false);
-      }
-      else if (currentScrollY < lastScrollY.current) {
+      } else if (currentScrollY < lastScrollY.current) {
         setShowNavbar(true);
       }
-
-      lastScrollY.current = currentScrollY; //last scroll position
+      lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isAutoScrolling]);
 
-  // Spring animation navbar 
   const navSpring = useSpring({
-    transform: showNavbar ? "translateY(0%)" : "translateY(-120%)",
+    top: showNavbar ? "1rem" : "-8rem",
     config: { tension: 250, friction: 30 },
   });
 
@@ -82,7 +74,6 @@ export default function Navbar() {
     },
   ];
 
-  // useTrail hook for staggered animation 
   const trail = useTrail(allMenuItems.length, {
     from: { opacity: 0, transform: "translateY(-10px)" },
     opacity: isOpen ? 1 : 0,
@@ -105,7 +96,6 @@ export default function Navbar() {
     }
   };
 
-  // Spring animation dropdown 
   const menuSpring = useSpring({
     opacity: isOpen ? 1 : 0,
     transform: isOpen ? "scaleY(1)" : "scaleY(0)",
@@ -119,7 +109,7 @@ export default function Navbar() {
         ...navSpring,
         boxShadow: "inset 0 0 15px rgba(251,146,60,0.50)",
       }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
+      className="fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
         <div className="flex justify-between items-center h-18">
