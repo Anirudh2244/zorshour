@@ -74,7 +74,7 @@ function App() {
           enableTilt={false}
           enableMagnetism={false}
           clickEffect={true}
-          spotlightRadius={500}
+          spotlightRadius={400}
           particleCount={20}
           glowColor="251, 146, 60"
         />

@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
+"use client";
+import { useRef, useEffect, useState, useCallback, useMemo, memo } from 'react';
 import { gsap } from 'gsap';
 import { Rocket, Telescope, Target, LineChart } from 'lucide-react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -6,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const DEFAULT_PARTICLE_COUNT = 12;
-const DEFAULT_SPOTLIGHT_RADIUS = 300;
+const DEFAULT_SPOTLIGHT_RADIUS = 400;
 const DEFAULT_GLOW_COLOR_CSS = '38, 38, 38';
 const MOBILE_BREAKPOINT = 768;
 
@@ -96,10 +97,21 @@ const useIntersectionObserver = (ref, options) => {
   return isIntersecting;
 };
 
-const ParticleCard = ({
+const useMobileDetection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  return isMobile;
+};
+
+const ParticleCard = memo(({
   children,
   className = '',
-  disableAnimations = false,
+  isMobileDevice = false,
   style,
   particleCount = DEFAULT_PARTICLE_COUNT,
   glowColor = DEFAULT_GLOW_COLOR_CSS,
@@ -114,6 +126,7 @@ const ParticleCard = ({
   const memoizedParticles = useRef([]);
   const particlesInitialized = useRef(false);
   const magnetismAnimationRef = useRef(null);
+  const glowAnimationRef = useRef(null);
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;
@@ -128,6 +141,7 @@ const ParticleCard = ({
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
     magnetismAnimationRef.current?.kill?.();
+    glowAnimationRef.current?.kill?.();
     particlesRef.current.forEach(particle => {
       gsap.to(particle, {
         scale: 0,
@@ -175,34 +189,55 @@ const ParticleCard = ({
     });
   }, [initializeParticles]);
 
+  const updateGlow = useCallback((clientX, clientY) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const relativeX = ((clientX - rect.left) / rect.width) * 100;
+    const relativeY = ((clientY - rect.top) / rect.height) * 100;
+
+    cardRef.current.style.setProperty('--glow-x', `${relativeX}%`);
+    cardRef.current.style.setProperty('--glow-y', `${relativeY}%`);
+  }, []);
+
+  const startAnimations = useCallback(() => {
+    const element = cardRef.current;
+    if (!element) return;
+    element.classList.add('is-active');
+    animateParticles();
+    if (enableTilt) {
+      gsap.to(element, { rotateX: 5, rotateY: 5, duration: 0.3, ease: 'power2.out', transformPerspective: 1000 });
+    }
+    if (enableMagnetism) {
+      magnetismAnimationRef.current = gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
+    }
+  }, [animateParticles, enableTilt, enableMagnetism]);
+
+  const stopAnimations = useCallback(() => {
+    const element = cardRef.current;
+    if (!element) return;
+    element.classList.remove('is-active');
+    clearAllParticles();
+    if (enableTilt) {
+      gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.3, ease: 'power2.out' });
+    }
+    if (enableMagnetism) {
+      gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
+    }
+  }, [clearAllParticles, enableTilt, enableMagnetism]);
+
   useEffect(() => {
     const element = cardRef.current;
     if (!element) return;
 
-    const startAnimations = () => {
-      element.classList.add('is-active');
-      animateParticles();
-      if (enableTilt) {
-        gsap.to(element, { rotateX: 5, rotateY: 5, duration: 0.3, ease: 'power2.out', transformPerspective: 1000 });
+    if (isMobileDevice) {
+      if (isIntersecting) {
+        startAnimations();
+      } else {
+        stopAnimations();
       }
-      if (enableMagnetism) {
-        magnetismAnimationRef.current = gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
-      }
-    };
-
-    const stopAnimations = () => {
-      element.classList.remove('is-active');
-      clearAllParticles();
-      if (enableTilt) {
-        gsap.to(element, { rotateX: 0, rotateY: 0, duration: 0.3, ease: 'power2.out' });
-      }
-      if (enableMagnetism) {
-        gsap.to(element, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
-      }
-    };
-
-    if (!disableAnimations) { // Desktop Logic
+    } else { // Desktop Logic
       const handleMouseMove = e => {
+        updateGlow(e.clientX, e.clientY);
         if (!enableTilt && !enableMagnetism) return;
         const rect = element.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -251,12 +286,10 @@ const ParticleCard = ({
           { scale: 1, opacity: 0, duration: 0.8, ease: 'power2.out', onComplete: () => ripple.remove() }
         );
       };
-
       element.addEventListener('mouseenter', startAnimations);
       element.addEventListener('mouseleave', stopAnimations);
       element.addEventListener('mousemove', handleMouseMove);
       element.addEventListener('click', handleClick);
-
       return () => {
         stopAnimations();
         element.removeEventListener('mouseenter', startAnimations);
@@ -264,14 +297,8 @@ const ParticleCard = ({
         element.removeEventListener('mousemove', handleMouseMove);
         element.removeEventListener('click', handleClick);
       };
-    } else { // Mobile Logic
-      if (isIntersecting) {
-        startAnimations();
-      } else {
-        stopAnimations();
-      }
     }
-  }, [disableAnimations, isIntersecting, animateParticles, clearAllParticles, enableTilt, enableMagnetism, clickEffect, glowColor]);
+  }, [isMobileDevice, isIntersecting, startAnimations, stopAnimations, updateGlow, enableTilt, enableMagnetism, clickEffect, glowColor]);
 
   return (
     <div
@@ -282,21 +309,22 @@ const ParticleCard = ({
       {children}
     </div>
   );
-};
+});
 
-const GlobalSpotlight = ({
+ParticleCard.displayName = 'ParticleCard';
+
+const GlobalSpotlight = memo(({
   gridRef,
   enabled = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
-  glowColor = DEFAULT_GLOW_COLOR_CSS
+  glowColor = DEFAULT_GLOW_COLOR_CSS,
+  isMobileDevice = false
 }) => {
   const spotlightRef = useRef(null);
   const isInsideSection = useRef(false);
-  const isMobile = useMobileDetection();
-  const disableAnimations = isMobile;
 
   useEffect(() => {
-    if (disableAnimations || !gridRef?.current || !enabled) return;
+    if (isMobileDevice || !gridRef?.current || !enabled) return;
     const spotlight = document.createElement('div');
     spotlight.className = 'global-spotlight';
     spotlight.style.cssText = `
@@ -382,9 +410,11 @@ const GlobalSpotlight = ({
       document.removeEventListener('mouseleave', handleMouseLeave);
       spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
     };
-  }, [gridRef, disableAnimations, enabled, spotlightRadius, glowColor]);
+  }, [gridRef, isMobileDevice, enabled, spotlightRadius, glowColor]);
   return null;
-};
+});
+
+GlobalSpotlight.displayName = 'GlobalSpotlight';
 
 const BentoCardGrid = ({ children, gridRef }) => (
   <div
@@ -396,18 +426,7 @@ const BentoCardGrid = ({ children, gridRef }) => (
   </div>
 );
 
-const useMobileDetection = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-  return isMobile;
-};
-
-const AnimatedContent = ({ children, disableAnimations }) => {
+const AnimatedContent = memo(({ children, disableAnimations }) => {
   const contentRef = useRef(null);
   useEffect(() => {
     if (disableAnimations || !contentRef.current) return;
@@ -428,10 +447,11 @@ const AnimatedContent = ({ children, disableAnimations }) => {
       .fromTo(description, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.2);
   }, [disableAnimations]);
   return <div ref={contentRef}>{children}</div>;
-};
+});
+
+AnimatedContent.displayName = 'AnimatedContent';
 
 const PhilosophySection = ({
-  textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
   enableBorderGlow = true,
@@ -445,8 +465,16 @@ const PhilosophySection = ({
 }) => {
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
-  const currentParticleCount = shouldDisableAnimations ? Math.floor(particleCount / 2) : particleCount;
+  const shouldAnimateBasedOnStars = enableStars;
+
+  const particleCardProps = useMemo(() => ({
+    isMobileDevice: isMobile,
+    particleCount: isMobile ? Math.floor(particleCount / 2) : particleCount,
+    glowColor,
+    enableTilt,
+    clickEffect,
+    enableMagnetism,
+  }), [isMobile, particleCount, glowColor, enableTilt, clickEffect, enableMagnetism]);
 
   return (
     <section id="philosophy">
@@ -538,6 +566,7 @@ const PhilosophySection = ({
           enabled={enableSpotlight}
           spotlightRadius={spotlightRadius}
           glowColor={glowColor}
+          isMobileDevice={isMobile}
         />
       )}
       <BentoCardGrid gridRef={gridRef}>
@@ -578,14 +607,9 @@ const PhilosophySection = ({
                   key={index}
                   className={baseClassName}
                   style={cardStyle}
-                  disableAnimations={shouldDisableAnimations}
-                  particleCount={currentParticleCount}
-                  glowColor={glowColor}
-                  enableTilt={enableTilt}
-                  clickEffect={clickEffect}
-                  enableMagnetism={enableMagnetism}
+                  {...particleCardProps}
                 >
-                  <AnimatedContent disableAnimations={shouldDisableAnimations}>{content}</AnimatedContent>
+                  <AnimatedContent disableAnimations={disableAnimations}>{content}</AnimatedContent>
                 </ParticleCard>
               );
             }
@@ -595,7 +619,7 @@ const PhilosophySection = ({
                 className={baseClassName}
                 style={cardStyle}
               >
-                <AnimatedContent disableAnimations={shouldDisableAnimations}>{content}</AnimatedContent>
+                <AnimatedContent disableAnimations={disableAnimations}>{content}</AnimatedContent>
               </div>
             );
           })}
@@ -604,4 +628,5 @@ const PhilosophySection = ({
     </section>
   );
 };
+
 export default PhilosophySection;
