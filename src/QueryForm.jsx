@@ -76,7 +76,7 @@ const QueryForm = () => {
                   name="from_name"
                   required
                   placeholder="Enter your name or company"
-                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200 
+                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-500 
                              focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
                 />
               </div>
@@ -90,7 +90,7 @@ const QueryForm = () => {
                   name="from_email"
                   required
                   placeholder="Enter your email address"
-                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200 
+                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-500 
                              focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
                 />
               </div>
@@ -104,7 +104,7 @@ const QueryForm = () => {
                   name="phone"
                   required
                   placeholder="Enter your phone number"
-                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200
+                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-500
                              focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300"
                 />
               </div>
@@ -118,7 +118,7 @@ const QueryForm = () => {
                   name="message"
                   rows="4"
                   placeholder="Enter your query or message"
-                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200
+                  className="w-full p-3 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-500
                              focus:outline-none focus:ring-1 focus:ring-orange-400 transition duration-300 resize-none"
                 ></textarea>
               </div>
