@@ -1,19 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Row from "./Row"
-import Col from "./Col"
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import Col from "./Col";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import LogoLoop from './LogoLoop';
-import AboutUs from "./AboutUs"
-import HorizontalScroll from "./HorizontalScroll"
-import HeroSection from "./HeroSection"
+import AboutUs from "./AboutUs";
+import HorizontalScroll from "./HorizontalScroll";
+import HeroSection from "./HeroSection";
 import PhilosophySection from "./PhilosophySection";
 import QueryForm from "./QueryForm";
 import CosmicTrajectory from "./CosmicTrajectory";
-import CircularText from "./CircularText";
-
-
 
 const imageLogos = [
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/solara.png?updatedAt=1758100052488", alt: "solara", href: "" },
@@ -29,8 +25,6 @@ const imageLogos = [
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/carbamide.png?updatedAt=1758099561569", alt: "carbamide", href: "" },
   { src: "https://ik.imagekit.io/adsrc2244/Zorshour/good-bug.png?updatedAt=1757933147044", alt: "good-bug", href: "" }
 ];
-
-
 
 function App() {
   const [showHero, setShowHero] = useState(true);
@@ -94,7 +88,7 @@ function App() {
 
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

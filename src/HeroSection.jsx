@@ -1,13 +1,14 @@
 "use client";
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Col from './Col';
 import Particles from './Particles';
 import ShimmerBorder from './ShimmerBorder';
 
+// Easing function for smooth scrolling
 const easeInOutCubic = (t) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-const smoothScrollTo = (targetY, duration = 1000) => {
+const smoothScrollTo = (targetY, duration = 1000, onComplete) => {
   const startY = window.scrollY;
   const diff = targetY - startY;
   let startTime;
@@ -22,6 +23,8 @@ const smoothScrollTo = (targetY, duration = 1000) => {
 
     if (time < duration) {
       requestAnimationFrame(step);
+    } else {
+      if (onComplete) onComplete();
     }
   };
 
@@ -31,17 +34,15 @@ const smoothScrollTo = (targetY, duration = 1000) => {
 export default function HeroSection() {
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
 
-  // Function to handle the scroll
+  // scroll to the "aboutus" section
   const handleScrollToAboutUs = () => {
-    const el = document.getElementById("aboutus");
-    if (el) {
+    const element = document.getElementById("aboutus");
+    if (element) {
       setIsAutoScrolling(true);
-      const targetY = el.getBoundingClientRect().top + window.scrollY;
-      smoothScrollTo(targetY, 1000);
-
-      setTimeout(() => {
-        setIsAutoScrolling(false);
-      }, 1000);
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY, 1000, () => {
+        setIsAutoScrolling(false); 
+      });
     }
   };
 
@@ -51,7 +52,7 @@ export default function HeroSection() {
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Particles
           className="w-full h-full"
-          particleColors={['#B7410E', '#e5e7eb']}
+          particleColors={['#B7410E', '#e5e7eb']} 
           particleCount={1000}
           particleSpread={10}
           speed={0.05}
@@ -61,13 +62,12 @@ export default function HeroSection() {
           disableRotation={false}
         />
       </div>
+      {/* Content */}
       <Col className="relative z-10 w-full h-full justify-center items-center text-center px-4">
         <div className="max-w-4xl mx-auto pointer-events-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-white/90 drop-shadow-md">
             Your{' '}
-            <span
-              className="font-extrabold relative inline-block bg-gradient-to-r from-neutral-200 via-white to-neutral-200 bg-clip-text text-transparent tracking-wide animate-north-star-shimmer"
-            >
+            <span className="font-extrabold relative inline-block bg-gradient-to-r from-neutral-200 via-white to-neutral-200 bg-clip-text text-transparent tracking-wide animate-north-star-shimmer">
               North Star
             </span>{' '}
             for Digital Marketing
@@ -84,13 +84,12 @@ export default function HeroSection() {
             >
               <button
                 onClick={handleScrollToAboutUs}
-                className="font-bold text-lg"
+                className="font-bold text-lg cursor-pointer" 
               >
                 Explore Our Solutions
               </button>
             </ShimmerBorder>
           </div>
-
         </div>
       </Col>
     </Col>

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 
@@ -120,7 +121,7 @@ const Particles = ({
     };
 
     if (moveParticlesOnHover) {
-      window.addEventListener("mousemove", handleMouseMove); 
+      window.addEventListener("mousemove", handleMouseMove);
     }
 
     const count = particleCount;
@@ -197,7 +198,7 @@ const Particles = ({
     return () => {
       window.removeEventListener("resize", resize);
       if (moveParticlesOnHover) {
-        window.removeEventListener("mousemove", handleMouseMove); 
+        window.removeEventListener("mousemove", handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
@@ -215,6 +216,7 @@ const Particles = ({
     sizeRandomness,
     cameraDistance,
     disableRotation,
+    particleColors, 
   ]);
 
   return (
