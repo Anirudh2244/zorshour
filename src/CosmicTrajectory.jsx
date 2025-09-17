@@ -21,7 +21,7 @@ const dividerVariants = {
     opacity: 1,
     transition: {
       delay: 0.4,
-      duration: 0.8,
+      duration: 1.2,
       ease: "easeOut",
     },
   },
@@ -73,14 +73,13 @@ const CosmicTrajectory = () => {
 
         <div className="space-y-16">
           {sections.map((section, i) => (
-            <div
+            <article 
               key={i}
               className="flex flex-col md:flex-row items-center md:items-start gap-8"
             >
               {/* Left Icon */}
               <motion.div
                 className="w-full md:w-1/4 flex-shrink-0 flex justify-start md:justify-center"
-                custom={i}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
@@ -90,9 +89,8 @@ const CosmicTrajectory = () => {
               </motion.div>
 
               {/* Right Content */}
-              <div className="w-full md:w-3/4">
+              <div className="w-full md:w-3/4"> 
                 <motion.div
-                  custom={i}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
@@ -117,7 +115,7 @@ const CosmicTrajectory = () => {
                   />
                 )}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
