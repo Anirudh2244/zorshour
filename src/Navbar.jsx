@@ -50,8 +50,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isAutoScrolling]);
 
+  // FIX: Use transform instead of top for smooth animation
   const navSpring = useSpring({
-    top: showNavbar ? "1rem" : "-8rem",
+    transform: showNavbar ? "translateY(0%)" : "translateY(-120%)",
     config: { tension: 250, friction: 30 },
   });
 
@@ -109,7 +110,7 @@ export default function Navbar() {
         ...navSpring,
         boxShadow: "inset 0 0 15px rgba(251,146,60,0.50)",
       }}
-      className="fixed left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
+      className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 bg-stone-950/40 backdrop-blur-sm rounded-2xl"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
         <div className="flex justify-between items-center h-18">
