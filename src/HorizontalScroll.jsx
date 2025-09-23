@@ -17,7 +17,7 @@ const services = [
     title: "Performance Marketing",
     heading: "Crafting Your Digital Roadmap",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing.png?updatedAt=1758617432027",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing-new.png?updatedAt=1758648643482",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4">
@@ -46,7 +46,7 @@ const services = [
     title: "Affiliate Marketing",
     heading: "Expanding Your Reach, Amplifying Growth",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/influemcer-makrt.png?updatedAt=1758617277122",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/influemcer-makrt-new.png?updatedAt=1758648764203",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4">
@@ -76,7 +76,7 @@ const services = [
     title: "Influencer Marketing",
     heading: "Creating Impact Through Influence",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/influencer-new.png?updatedAt=1758617276748",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/influencer-new-.png?updatedAt=1758649046385",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4">
@@ -154,7 +154,7 @@ const MobileCarousel = () => {
     const words = title.split(" ");
     return (
       <>
-        <span className="text-orange-400">{words[0]}</span>{" "}
+        <span className="">{words[0]}</span>{" "}
         {words.slice(1).join(" ")}
       </>
     );

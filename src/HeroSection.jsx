@@ -76,8 +76,7 @@ export default function HeroSection() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 drop-shadow-md"
           >
             <span
-              className="font-extrabold text-white md:text-transparent"
-              style={{ WebkitTextStroke: '1.5px white', textStroke: '1.5px white' }}
+              className="font-extrabold text-white"
             >
               Your
             </span>{' '}
@@ -91,8 +90,7 @@ export default function HeroSection() {
               North Star
             </span>{' '}
             <span
-              className="font-extrabold text-white md:text-transparent"
-              style={{ WebkitTextStroke: '1.5px white', textStroke: '1.5px white' }}
+              className="font-extrabold text-white"
             >
               for Digital Marketing
             </span>

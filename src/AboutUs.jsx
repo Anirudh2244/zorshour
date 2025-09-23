@@ -50,7 +50,7 @@ export default function AboutUs() {
 
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
         {/* Left: Image */}
-        <div className="overflow-hidden rounded-2xl shadow-lg">
+        <div className="overflow-hidden rounded-2xl shadow-lg relative"> {/* Add relative here */}
           <motion.video
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -63,6 +63,8 @@ export default function AboutUs() {
             muted
             playsInline
           />
+          {/* black filter */}
+          <div className="absolute inset-0 bg-black opacity-15 rounded-2xl"></div> 
         </div>
 
         {/* Right: Content */}
@@ -77,19 +79,19 @@ export default function AboutUs() {
           <p className="self-start mb-2 text-xl text-white/50 tracking-wide font-medium">
             About Us
           </p>
-          <h3 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-400 bg-clip-text text-transparent leading-tight">
+          <h3 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-orange-300 via-orange-200 to-orange-300 bg-clip-text text-transparent leading-tight">
             Illuminating Brands with Precision
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-white/70 font-light">
             At{" "}
-            <span className="font-semibold text-white">ZorShour</span>, we
+            ZorShour, we
             believe marketing should do more than just look good -{" "}
-            <span className="font-semibold text-orange-400">it should work.</span>
+            it should work.
             <br />
             By blending creativity with strategy, we combine{" "}
-            <span className="font-medium text-white">data-driven precision</span>{" "}
+            data-driven precision{" "}
             with{" "}
-            <span className="font-medium text-white">compelling storytelling</span>{" "}
+            compelling storytelling{" "}
             to amplify your visibility and connect with the right audience. We
             transform bold ideas into measurable growth, ensuring every campaign
             shines as brightly as your ambition.
