@@ -22,12 +22,12 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing.png?updatedAt=1758617432027",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In the vast eCommerce galaxy, we help brands launch, grow, and scale
           to the top. Our focus is on visibility, trust, and customer experience
           — ensuring that every click moves you closer to sustainable growth.
         </p>
-        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
             <FaRocket className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Rank higher and boost product visibility</span>
@@ -51,13 +51,13 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/influemcer-makrt.png?updatedAt=1758617277122",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In the interconnected eCommerce galaxy, affiliate marketing helps brands
           reach wider audiences and unlock scalable growth. By building trusted
           partnerships and optimizing performance, we ensure your brand connects
           further and converts faster.
         </p>
-        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
             <FaUsers className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Expand reach with affiliates & influencers</span>
@@ -81,13 +81,13 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/influencer-new.png?updatedAt=1758617276748",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
           In today’s eCommerce galaxy, influencer marketing bridges the gap
           between brands and customers. By collaborating with trusted voices,
           we build authentic connections that drive awareness, engagement,
           and conversions.
         </p>
-        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
+        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
             <FaBullhorn className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Boost awareness with authentic voices</span>
@@ -153,8 +153,8 @@ const MobileCarousel = () => {
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {/* Top Section (Image) */}
-          <div className="w-full flex-shrink-0 flex items-center justify-center pt-12 md:px-12 bg-black shadow-lg">
+          {/* Top Section */}
+          <div className="w-full flex-shrink-0 flex items-center justify-center py-12 px-6 md:px-12 bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
@@ -165,7 +165,7 @@ const MobileCarousel = () => {
             />
           </div>
 
-          {/* Bottom Section (Content) */}
+          {/* Bottom Section */}
           <div className="w-full flex-grow flex items-center justify-center py-10 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
             <div
               className="absolute inset-0 z-0"
