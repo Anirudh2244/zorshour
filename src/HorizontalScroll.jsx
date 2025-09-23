@@ -22,12 +22,12 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing.png?updatedAt=1758617432027",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
           In the vast eCommerce galaxy, we help brands launch, grow, and scale
           to the top. Our focus is on visibility, trust, and customer experience
           — ensuring that every click moves you closer to sustainable growth.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
+        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
           <li className="flex items-start">
             <FaRocket className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Rank higher and boost product visibility</span>
@@ -51,13 +51,13 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/influemcer-makrt.png?updatedAt=1758617277122",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
           In the interconnected eCommerce galaxy, affiliate marketing helps brands
           reach wider audiences and unlock scalable growth. By building trusted
           partnerships and optimizing performance, we ensure your brand connects
           further and converts faster.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
+        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
           <li className="flex items-start">
             <FaUsers className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Expand reach with affiliates & influencers</span>
@@ -81,13 +81,13 @@ const services = [
       "https://ik.imagekit.io/adsrc2244/Zorshour/influencer-new.png?updatedAt=1758617276748",
     content: (
       <>
-        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
+        <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4"> {/* Reduced mb-6 to mb-4 */}
           In today’s eCommerce galaxy, influencer marketing bridges the gap
           between brands and customers. By collaborating with trusted voices,
           we build authentic connections that drive awareness, engagement,
           and conversions.
         </p>
-        <ul className="text-left space-y-4 text-neutral-300 text-l md:text-xl leading-relaxed">
+        <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed"> {/* Reduced space-y-4 to space-y-2 */}
           <li className="flex items-start">
             <FaBullhorn className="text-orange-400 mr-3 flex-shrink-0 mt-1 text-l" />
             <span>Boost awareness with authentic voices</span>
@@ -143,7 +143,7 @@ const MobileCarousel = () => {
   };
 
   return (
-    <div className="relative w-screen min-h-screen flex flex-col overflow-hidden">
+    <div className="relative w-screen min-h-screen flex flex-col overflow-hidden mt-8">
       <AnimatePresence mode="wait">
         <motion.section
           key={currentSlide}
@@ -153,20 +153,20 @@ const MobileCarousel = () => {
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {/* Top Section */}
-          <div className="w-full flex-shrink-0 flex items-center justify-center py-20 px-6 md:px-12 bg-black shadow-lg">
+          {/* Top Section (Image) */}
+          <div className="w-full flex-shrink-0 flex items-center justify-center pt-12 md:px-12 bg-black shadow-lg">
             <motion.img
               src={services[currentSlide].contentImage}
               alt={services[currentSlide].title}
-              className="w-full h-auto max-h-[40vh] object-contain shadow-lg rounded-2xl"
+              className="w-full h-auto max-h-[30vh] object-contain shadow-lg rounded-2xl"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
           </div>
 
-          {/* Bottom Section */}
-          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
+          {/* Bottom Section (Content) */}
+          <div className="w-full flex-grow flex items-center justify-center py-10 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
             <div
               className="absolute inset-0 z-0"
               style={{ background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)" }}
@@ -180,7 +180,7 @@ const MobileCarousel = () => {
               variants={textStagger}
             >
               <motion.h1
-                className="text-3xl md:text-4xl font-extrabold mb-6"
+                className="text-3xl md:text-4xl font-extrabold mb-4"
                 variants={textStagger}
                 custom={1}
               >
@@ -191,7 +191,6 @@ const MobileCarousel = () => {
               </motion.div>
             </motion.div>
           </div>
-
         </motion.section>
       </AnimatePresence>
 
