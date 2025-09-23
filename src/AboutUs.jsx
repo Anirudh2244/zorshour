@@ -51,12 +51,17 @@ export default function AboutUs() {
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
         {/* Left: Image */}
         <div className="overflow-hidden rounded-2xl shadow-lg">
-          <motion.img
+          <motion.video
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80"
-            alt="Influencer marketing"
-            className="w-full h-[400px] object-cover"
+            src="https://ik.imagekit.io/adsrc2244/Zorshour/herosection.mp4?updatedAt=1758626177129"
+            poster="your-video-thumbnail.jpg"
+            alt="Cosmic video"
+            className="w-full h-auto max-h-[400px] object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </div>
 
