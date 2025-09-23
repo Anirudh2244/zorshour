@@ -7,11 +7,10 @@ import {
   FaStar,
   FaChartLine,
   FaBullhorn,
-  FaUserFriends,
-  FaChartBar,
   FaUsers,
   FaLink,
   FaHandshake,
+  FaChartBar,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,7 +19,7 @@ const services = [
     title: "Performance Marketing",
     heading: "Crafting Your Digital Roadmap",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing.png?updatedAt=1758617432027",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
@@ -49,7 +48,7 @@ const services = [
     title: "Affiliate Marketing",
     heading: "Expanding Your Reach, Amplifying Growth",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/influemcer-makrt.png?updatedAt=1758617277122",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
@@ -79,7 +78,7 @@ const services = [
     title: "Influencer Marketing",
     heading: "Creating Impact Through Influence",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/galaxy%202%20(1)%20(1).png?updatedAt=1757063985917",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/influencer-new.png?updatedAt=1758617276748",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-6">
@@ -266,7 +265,7 @@ const DesktopScroll = () => {
               key={idx}
               className="flex-shrink-0 w-screen h-full flex md:flex-row"
             >
-              {/* Left Section */}
+              {/* Left Section (Image) */}
               <motion.div
                 className="w-1/2 flex flex-col items-center justify-center py-20 px-6 md:px-12 bg-black"
                 initial="hidden"
@@ -274,18 +273,21 @@ const DesktopScroll = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 variants={textStagger}
               >
-                <motion.img
-                  src={service.contentImage}
-                  alt={service.title}
-                  className="h-[55vh] lg:h-[65vh] object-contain shadow-lg rounded-2xl"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1.05 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                />
+                {/* Parent container with fixed size */}
+                <div className="w-full h-[65vh] flex items-center justify-center shadow-lg rounded-2xl overflow-hidden">
+                  <motion.img
+                    src={service.contentImage}
+                    alt={service.title}
+                    className="w-full h-full object-contain"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1.05 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                  />
+                </div>
               </motion.div>
 
-              {/* Right Section */}
+              {/* Right Section (Content) */}
               <motion.div
                 className="w-1/2 flex items-center justify-center py-20 px-6 md:px-12 relative overflow-hidden bg-black"
                 initial="hidden"
@@ -296,7 +298,6 @@ const DesktopScroll = () => {
                 <div
                   className="absolute inset-0 z-0"
                   style={{ background: "radial-gradient(circle at bottom right, rgba(251,146,60,0.20) 0%, rgba(17,17,17,0) 50%)" }}
-
                 />
 
                 {/* Content */}
@@ -317,7 +318,6 @@ const DesktopScroll = () => {
                   </motion.div>
                 </div>
               </motion.div>
-
             </section>
           ))}
         </div>
