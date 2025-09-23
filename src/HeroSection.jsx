@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Col from './Col';
 import Particles from './Particles';
 import ShimmerBorder from './ShimmerBorder';
+import { motion } from "framer-motion";
 
 // Easing function for smooth scrolling
 const easeInOutCubic = (t) =>
@@ -64,20 +65,42 @@ export default function HeroSection() {
       </div>
       {/* Content */}
       <Col className="relative z-10 w-full h-full justify-center items-center text-center px-4">
-        <div className="max-w-4xl mx-auto pointer-events-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-white/90 drop-shadow-md">
-            Your{' '}
-            <span className="font-extrabold relative inline-block bg-gradient-to-r from-neutral-200 via-white to-neutral-200 bg-clip-text text-transparent tracking-wide animate-north-star-shimmer">
+        {/* Animated content container */}
+        <motion.div
+          className="max-w-4xl mx-auto pointer-events-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <h1
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 drop-shadow-md"
+          >
+            <span
+              className="font-extrabold text-white md:text-transparent"
+              style={{ WebkitTextStroke: '1.5px white', textStroke: '1.5px white' }}
+            >
+              Your
+            </span>{' '}
+            <span className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer">
               North Star
             </span>{' '}
-            for Digital Marketing
+            <span
+              className="font-extrabold text-white md:text-transparent"
+              style={{ WebkitTextStroke: '1.5px white', textStroke: '1.5px white' }}
+            >
+              for Digital Marketing
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p
+            className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
+          >
             Navigate the digital universe with
             <span className="text-orange-400 font-bold animate-subtle-pulse-glow text-xl md:text-2xl"> the strategies that illuminate your path</span> to real, sustainable growth.
           </p>
 
-          <div className="mt-8 flex justify-center">
+          <div
+            className="mt-8 flex justify-center"
+          >
             <ShimmerBorder
               shimmerStyle="container"
               className="px-8 py-3 rounded-full flex justify-center items-center"
@@ -90,7 +113,7 @@ export default function HeroSection() {
               </button>
             </ShimmerBorder>
           </div>
-        </div>
+        </motion.div>
       </Col>
     </Col>
   );
