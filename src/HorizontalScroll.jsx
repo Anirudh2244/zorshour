@@ -17,7 +17,7 @@ const services = [
     title: "Performance Marketing",
     heading: "Crafting Your Digital Roadmap",
     contentImage:
-      "https://ik.imagekit.io/adsrc2244/Zorshour/performance%20martekting.png?updatedAt=1758617276335",
+      "https://ik.imagekit.io/adsrc2244/Zorshour/performance-marketing.png?updatedAt=1758617432027",
     content: (
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4">
