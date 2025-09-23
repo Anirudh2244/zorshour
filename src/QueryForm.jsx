@@ -127,7 +127,7 @@ const QueryForm = () => {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full bg-white text-black font-semibold py-3 px-6 rounded-xl
+                  className="w-full bg-white text-black font-semibold py-3 px-6 rounded-xl cursor-pointer
                              transition-all duration-500 ease-out 
                              hover:scale-[1.02] hover:text-white hover:bg-orange-400 hover:shadow-[0_0_20px_rgba(251,146,60,0.25)] disabled:opacity-50"
                 >

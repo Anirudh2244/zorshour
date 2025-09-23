@@ -96,7 +96,7 @@ export default function AboutUs() {
           </p>
           <button
             onClick={handleScrollToPhilosophy}
-            className="self-start bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
+            className="self-start cursor-pointer bg-white text-gray-950 font-semibold py-2.5 px-6 rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition-colors duration-300"
           >
             Learn More
           </button>
