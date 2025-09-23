@@ -42,7 +42,7 @@ export default function HeroSection() {
       setIsAutoScrolling(true);
       const targetY = element.getBoundingClientRect().top + window.scrollY;
       smoothScrollTo(targetY, 1000, () => {
-        setIsAutoScrolling(false); 
+        setIsAutoScrolling(false);
       });
     }
   };
@@ -53,7 +53,7 @@ export default function HeroSection() {
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Particles
           className="w-full h-full"
-          particleColors={['#B7410E', '#e5e7eb']} 
+          particleColors={['#B7410E', '#e5e7eb']}
           particleCount={1000}
           particleSpread={10}
           speed={0.05}
@@ -81,7 +81,13 @@ export default function HeroSection() {
             >
               Your
             </span>{' '}
-            <span className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer whitespace-nowrap">
+            <span
+              className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer whitespace-nowrap"
+              style={{
+                WebkitTextStroke: '0.5px #ffffff',
+                textStroke: '0.5px #ffffff',
+              }}
+            >
               North Star
             </span>{' '}
             <span
@@ -90,6 +96,7 @@ export default function HeroSection() {
             >
               for Digital Marketing
             </span>
+
           </h1>
           <p
             className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
@@ -107,7 +114,7 @@ export default function HeroSection() {
             >
               <button
                 onClick={handleScrollToAboutUs}
-                className="font-bold text-lg cursor-pointer" 
+                className="font-bold text-lg cursor-pointer"
               >
                 Explore Our Solutions
               </button>
