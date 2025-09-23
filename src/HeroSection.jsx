@@ -81,7 +81,7 @@ export default function HeroSection() {
             >
               Your
             </span>{' '}
-            <span className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer">
+            <span className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer whitespace-nowrap">
               North Star
             </span>{' '}
             <span
