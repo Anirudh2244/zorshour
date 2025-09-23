@@ -35,9 +35,18 @@ const QueryForm = () => {
   return (
     <section
       id="query"
-      className="relative pb-20 bg-gradient-to-b from-black to-neutral-900 text-white"
+      className="relative pb-20 px-6 md:px-12 bg-gradient-to-b from-black to-neutral-900 text-white"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto">
+        <motion.h2
+          className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          Let’s Make It <span className="text-orange-400">Happen!</span>
+        </motion.h2>
         <motion.div
           className="flex flex-col md:flex-row items-center border border-neutral-700 rounded-3xl overflow-hidden shadow-lg"
           initial={{ opacity: 0, y: 30 }}
@@ -55,16 +64,6 @@ const QueryForm = () => {
 
           {/* Right Side - Form */}
           <div className="md:w-[70%] w-full bg-black/60 p-4 space-y-6">
-            <motion.h2
-              className="text-3xl font-extrabold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, amount: 0.3 }}
-            >
-              Let’s Make It <span className="text-orange-400">Happen!</span>
-            </motion.h2>
-
             {/* EmailJS Form */}
             <form ref={form} onSubmit={sendEmail} className="space-y-4">
               <div>

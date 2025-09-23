@@ -530,7 +530,7 @@ padding: 0.75rem 1.5rem 0.75rem 1.5rem;
 }
 `}
             </style>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20 pb-17 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
+            <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20 pb-10 px-6">Our Philosophy, <span className="text-orange-400">Our North Star</span></p>
             {enableSpotlight && (
                 <GlobalSpotlight
                     gridRef={gridRef}
