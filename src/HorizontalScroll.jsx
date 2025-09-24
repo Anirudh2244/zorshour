@@ -190,7 +190,7 @@ const MobileCarousel = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="w-full flex-grow flex items-center justify-center pt-6 pb-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
+          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
             <div
               className="absolute inset-0 z-0"
               style={{
@@ -365,7 +365,7 @@ export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <section id="services">
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center">
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20 md:pt-0">
         Our <span className="text-orange-400">Services</span>
       </p>
       {isMobile ? <MobileCarousel /> : <DesktopScroll />}
