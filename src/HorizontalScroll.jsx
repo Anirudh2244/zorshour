@@ -206,7 +206,7 @@ const MobileCarousel = () => {
               variants={textStagger}
             >
               <motion.h1
-                className="text-3xl md:text-4xl font-extrabold mb-4"
+                className="text-3xl md:text-4xl font-bold mb-4"
                 variants={textStagger}
                 custom={1}
               >
@@ -365,7 +365,7 @@ export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <section id="services">
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20 md:pt-0">
+      <p className="text-4xl lg:text-5xl font-extrabold text-center pt-20 md:pt-14">
         Our <span className="text-orange-400">Services</span>
       </p>
       {isMobile ? <MobileCarousel /> : <DesktopScroll />}
