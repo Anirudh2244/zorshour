@@ -22,8 +22,7 @@ const services = [
       <>
         <p className="text-neutral-300 text-l md:text-xl leading-relaxed text-center md:text-left mb-4">
           In the vast eCommerce galaxy, we help brands launch, grow, and scale
-          to the top. Our focus is on visibility, trust, and customer experience
-          — ensuring that every click moves you closer to sustainable growth.
+          to the top. Our focus is on visibility, trust, and customer experience - ensuring that every click moves you closer to sustainable growth.
         </p>
         <ul className="text-left space-y-2 text-neutral-300 text-l md:text-xl leading-relaxed">
           <li className="flex items-start">
@@ -152,10 +151,14 @@ const MobileCarousel = () => {
 
   const renderTitleWithOrangeFirstWord = (title) => {
     const words = title.split(" ");
+    const firstWord = words[0];
+    const secondWord = words[1];
+    const restOfWords = words.slice(2).join(" ");
     return (
       <>
-        <span className="">{words[0]}</span>{" "}
-        {words.slice(1).join(" ")}
+        <span>{firstWord}</span>{" "}
+        <span className="text-orange-400">{secondWord}</span>{" "}
+        {restOfWords}
       </>
     );
   };
@@ -187,7 +190,7 @@ const MobileCarousel = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="w-full flex-grow flex items-center justify-center py-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
+          <div className="w-full flex-grow flex items-center justify-center pt-6 pb-12 px-6 md:px-12 relative overflow-hidden bg-black shadow-lg">
             <div
               className="absolute inset-0 z-0"
               style={{
@@ -271,10 +274,14 @@ const DesktopScroll = () => {
 
   const renderTitleWithOrangeFirstWord = (title) => {
     const words = title.split(" ");
+    const firstWord = words[0];
+    const secondWord = words[1];
+    const restOfWords = words.slice(2).join(" ");
     return (
       <>
-        <span className="text-orange-400">{words[0]}</span>{" "}
-        {words.slice(1).join(" ")}
+        <span>{firstWord}</span>{" "}
+        <span className="text-orange-400">{secondWord}</span>{" "}
+        {restOfWords}
       </>
     );
   };
@@ -358,7 +365,7 @@ export default function HorizontalScroll() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <section id="services">
-      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center pt-20">
+      <p className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center">
         Our <span className="text-orange-400">Services</span>
       </p>
       {isMobile ? <MobileCarousel /> : <DesktopScroll />}
