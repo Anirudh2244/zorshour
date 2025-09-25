@@ -336,7 +336,6 @@
   }
 }
 
-/* In your global CSS file, e.g., styles/globals.css */
 
 .gradient-text-safari {
   background-image: linear-gradient(
@@ -351,3 +350,18 @@
   -webkit-text-fill-color: transparent;
 }
 
+
+.shimmer-border {
+  position: relative; 
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 1; 
+}
+
+.text {
+  position: relative;
+  z-index: 2; 
+  color: white; 
+}

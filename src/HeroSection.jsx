@@ -104,7 +104,7 @@ export default function HeroSection() {
           <p
             className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
           >
-            Navigate the digital universe with
+            Navigate the digital universe withh
             <span className="text-orange-400 font-bold animate-subtle-pulse-glow text-xl md:text-2xl"> the strategies that illuminate your path</span> to real, sustainable growth.
           </p>
 
