@@ -102,9 +102,9 @@ export default function HeroSection() {
 
           </h1>
           <p
-            className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-neutral-400 mb-8 max-w-2xl mx-auto"
           >
-            Navigate the digital universe withh
+            Navigate the digital universe with
             <span className="text-orange-400 font-bold animate-subtle-pulse-glow text-xl md:text-2xl"> the strategies that illuminate your path</span> to real, sustainable growth.
           </p>
 
@@ -115,7 +115,7 @@ export default function HeroSection() {
             >
               <button
                 onClick={handleScrollToAboutUs}
-                className="font-bold text-lg cursor-pointer"
+                className=" text-lg cursor-pointer text-neutral-400"
               >
                 Explore Our Solutions
               </button>
