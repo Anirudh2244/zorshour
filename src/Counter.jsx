@@ -1,11 +1,14 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Counter = ({ title, finalNumber, duration = 2 }) => {
   const [number, setNumber] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-  const controls = useAnimation();
+
+  // State to control the hover effect
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (!isInView) return;
@@ -34,12 +37,6 @@ const Counter = ({ title, finalNumber, duration = 2 }) => {
     requestAnimationFrame(step);
   }, [isInView, finalNumber, duration]);
 
-  useEffect(() => {
-    if (isInView) {
-      controls.start({ opacity: 0.3 });
-    }
-  }, [isInView, controls]);
-
   // number formatter (removes trailing .0)
   const formatNumber = (num) => {
     if (num >= 1_000_000) {
@@ -57,25 +54,19 @@ const Counter = ({ title, finalNumber, duration = 2 }) => {
 
   const formattedValue = formatNumber(number);
 
-  // Handle hover animations
-  const handleMouseEnter = () => {
-    controls.start({ opacity: 0.8 });
-  };
-  const handleMouseLeave = () => {
-    controls.start({ opacity: 0.3 });
-  };
-
   return (
     <div
       ref={ref}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="relative group flex flex-col items-center p-6 rounded-xl border border-neutral-800 transition-all duration-300 overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
+      {/* Background for the glow effect */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={controls}
-        className="absolute inset-0 z-0 rounded-xl transition-all duration-500"
+        animate={{ opacity: isInView ? (isHovered ? 0.8 : 0.3) : 0 }}
+        transition={{ duration: 0.5 }}
+        className="absolute inset-0 z-0 rounded-xl"
         style={{
           background:
             "radial-gradient(circle at bottom, rgba(251, 146, 60, 0.4) 0%, rgba(17, 17, 17, 0) 90%)",
