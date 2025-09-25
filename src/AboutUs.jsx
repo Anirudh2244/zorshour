@@ -106,10 +106,11 @@ export default function AboutUs() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <Counter title="Number of Campaigns Run" finalNumber={500} />
-        <Counter title="Revenue Generated for Clients" finalNumber={25000000} />
-        <Counter title="Trusted by Brands" finalNumber={50} />
+        <Counter key="campaigns" title="Number of Campaigns Run" finalNumber={500} />
+        <Counter key="revenue" title="Revenue Generated for Clients" finalNumber={25000000} />
+        <Counter key="brands" title="Trusted by Brands" finalNumber={50} />
       </div>
+
     </section>
   );
 }
