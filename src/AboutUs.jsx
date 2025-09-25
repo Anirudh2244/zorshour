@@ -77,12 +77,9 @@ export default function AboutUs() {
           style={{ backgroundColor: darkBg }}
         >
           <p className="self-start mb-2 text-xl text-white/50 tracking-wide font-medium">
-            About Uss
+            About Us
           </p>
-          <h3 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-orange-300 via-orange-200 to-orange-300 bg-clip-text text-transparent leading-tight" style={{
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
-          }}>
+          <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight gradient-text-safari">
             Illuminating Brands with Precision
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-white/70 font-light">

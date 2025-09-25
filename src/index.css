@@ -336,4 +336,18 @@
   }
 }
 
+/* In your global CSS file, e.g., styles/globals.css */
+
+.gradient-text-safari {
+  background-image: linear-gradient(
+    to right,
+    #ffb74d,
+    #ffc107,
+    #ffb74d
+  ); /* Use your gradient colors */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
 
