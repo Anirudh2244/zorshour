@@ -108,9 +108,7 @@ export default function HeroSection() {
             <span className="text-orange-400 font-bold animate-subtle-pulse-glow text-xl md:text-2xl"> the strategies that illuminate your path</span> to real, sustainable growth.
           </p>
 
-          <div
-            className="mt-8 flex justify-center"
-          >
+          <div className="mt-8 flex justify-center">
             <ShimmerBorder
               shimmerStyle="container"
               className="px-8 py-3 rounded-full flex justify-center items-center"
