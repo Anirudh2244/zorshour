@@ -81,8 +81,13 @@ export default function HeroSection() {
               Your
             </span>{' '}
             <span
-              className="font-extrabold relative inline-block bg-gradient-to-r from-orange-300 via-white to-orange-300 bg-clip-text text-transparent tracking-wide animate-pulse-shimmer whitespace-nowrap"
+              className="font-extrabold relative inline-block tracking-wide animate-pulse-shimmer whitespace-nowrap"
               style={{
+                backgroundImage: 'linear-gradient(to right, #fdba74, #fed7aa, #fdba74)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                WebkitTextFillColor: 'transparent',
                 WebkitTextStroke: '0.5px #ffffff',
                 textStroke: '0.5px #ffffff',
               }}

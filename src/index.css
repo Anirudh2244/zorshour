@@ -338,16 +338,16 @@
 
 /* In your global CSS file, e.g., styles/globals.css */
 
-.gradient-text {
+.gradient-text-safari {
   background-image: linear-gradient(
     to right,
     #fdba74, 
     #fed7aa, 
     #fdba74 
-  );
+  ); /* Use your gradient colors */
   background-clip: text;
-  -webkit-background-clip: text; 
+  -webkit-background-clip: text;
   color: transparent;
-  -webkit-text-fill-color: transparent; /* For Safari */
+  -webkit-text-fill-color: transparent;
 }
 
